@@ -1,10 +1,20 @@
 {
+  "flex-layout": {
+    "component": "Row",
+    "composition": "children",
+    "allowed": "*"
+  },
   "flex-layout.row": {
     "component": "Row",
     "composition": "children",
     "allowed": "*"
   },
   "flex-layout.col": {
+    "component": "Col",
+    "composition": "children",
+    "allowed": "*"
+  },
+  "flex-layout.column": {
     "component": "Col",
     "composition": "children",
     "allowed": "*"
