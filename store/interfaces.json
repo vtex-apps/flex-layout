@@ -1,0 +1,12 @@
+{
+  "flex-row": {
+    "component": "Row",
+    "composition": "children",
+    "allowed": "*"
+  },
+  "flex-col": {
+    "component": "Col",
+    "composition": "children",
+    "allowed": "*"
+  }
+}
