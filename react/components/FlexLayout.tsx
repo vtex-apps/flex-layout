@@ -3,13 +3,15 @@ import Container from 'vtex.store-components/Container'
 
 import { FlexLayoutContext, FlexLayoutTypes } from './FlexLayoutContext'
 import Row from './Row'
+import { generateBlockClass, BlockClass } from '../blockClass'
+
+import styles from './FlexLayout.css'
 
 interface Props {
   fullWidth?: boolean
-  blockClass?: string
 }
 
-const FlexLayout: FunctionComponent<Props> = ({
+const FlexLayout: FunctionComponent<Props & BlockClass> = ({
   fullWidth,
   children,
   blockClass,
@@ -17,6 +19,8 @@ const FlexLayout: FunctionComponent<Props> = ({
   const context = useContext(FlexLayoutContext)
 
   const content = <Row>{children}</Row>
+
+  const baseClassNames = generateBlockClass(styles.flexRow, blockClass)
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
   if (fullWidth && !isTopLevel) {
@@ -26,11 +30,11 @@ const FlexLayout: FunctionComponent<Props> = ({
   }
 
   if (fullWidth || !isTopLevel) {
-    return <div className={blockClass}>{content}</div>
+    return <div className={baseClassNames}>{content}</div>
   }
 
   return (
-    <div className={blockClass}>
+    <div className={baseClassNames}>
       <Container>{content}</Container>
     </div>
   )

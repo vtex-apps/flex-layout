@@ -1,11 +1,11 @@
 import React, { useContext, FunctionComponent } from 'react'
 import { FlexLayoutContext, FlexLayoutTypes } from './FlexLayoutContext'
 
-interface Props {
-  blockClass?: string
-}
+import { generateBlockClass, BlockClass } from '../blockClass'
 
-const Col: FunctionComponent<Props> = ({ children, blockClass }) => {
+import styles from './FlexLayout.css'
+
+const Col: FunctionComponent<BlockClass> = ({ children, blockClass }) => {
   const context = useContext(FlexLayoutContext)
 
   if (context.parent === FlexLayoutTypes.COL) {
@@ -23,7 +23,7 @@ const Col: FunctionComponent<Props> = ({ children, blockClass }) => {
 
   return (
     <FlexLayoutContext.Provider value={{ parent: FlexLayoutTypes.COL }}>
-      <div className={blockClass}>
+      <div className={generateBlockClass(styles.flexCol, blockClass)}>
         <div className="flex-ns flex-column">
           {React.Children.map(children, child => (
             <div className="h-100">{child}</div>
