@@ -44,6 +44,11 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+"@vtex/css-handles@^1.0.2":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@vtex/css-handles/-/css-handles-1.1.0.tgz#c49998230e7b1576bef4ea6125471137a54c6c86"
+  integrity sha512-GP5ONxBimQoKRIW8WjUCI5/HU13JdMTxPw1aoumWcDv3ycUu13IR8HzzIuTM+iFZE9ctvGZfVCq9FXqQ747yNw==
+
 classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"

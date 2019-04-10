@@ -1,7 +1,7 @@
 import React, { useContext, FunctionComponent } from 'react'
 import { FlexLayoutContext, FlexLayoutTypes } from './FlexLayoutContext'
 
-import { generateBlockClass, BlockClass } from '../blockClass'
+import { generateBlockClass, BlockClass } from '@vtex/css-handles'
 
 import styles from './FlexLayout.css'
 
