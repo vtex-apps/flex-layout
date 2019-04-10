@@ -1,8 +1,6 @@
 {
   "flex-layout": {
-    "component": "Row",
-    "composition": "children",
-    "allowed": "*"
+    "component": "Dummy"
   },
   "flex-layout.row": {
     "component": "Row",
