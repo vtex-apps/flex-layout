@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.0] - 2019-04-10
+### Added
+- Add `blockClass` prop to row and col.
+
 ## [0.2.0] - 2019-04-10
 ### Changed
 - Changed from `flex-row` and `flex-col` to `flex-layout.row` and `flex-layout.col`, respectively.

@@ -1,7 +1,11 @@
 import React, { useContext, FunctionComponent } from 'react'
 import { FlexLayoutContext, FlexLayoutTypes } from './FlexLayoutContext'
 
-const Row: FunctionComponent = ({ children }) => {
+interface Props {
+  blockClass?: string
+}
+
+const Row: FunctionComponent<Props> = ({ children }) => {
   const context = useContext(FlexLayoutContext)
 
   if (context.parent === FlexLayoutTypes.ROW) {
