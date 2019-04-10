@@ -1,1 +1,6 @@
-{ }
+{ 
+  "editor.row.title": "Row",
+  "editor.column.title": "Column",
+  "editor.row.description": "Row",
+  "editor.column.description": "Column"
+}
