@@ -3,7 +3,7 @@ import Container from 'vtex.store-components/Container'
 
 import { FlexLayoutContext, FlexLayoutTypes } from './FlexLayoutContext'
 import Row from './Row'
-import { generateBlockClass, BlockClass } from '../blockClass'
+import { generateBlockClass, BlockClass } from '../modules/blockClass'
 
 import styles from './FlexLayout.css'
 
