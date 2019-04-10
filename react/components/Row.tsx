@@ -1,7 +1,11 @@
 import React, { useContext, FunctionComponent } from 'react'
 import { FlexLayoutContext, FlexLayoutTypes } from './FlexLayoutContext'
 
-const Row: FunctionComponent = ({ children }) => {
+interface Props {
+  blockClass?: string
+}
+
+const Row: FunctionComponent<Props> = ({ children, blockClass }) => {
   const context = useContext(FlexLayoutContext)
 
   if (context.parent === FlexLayoutTypes.ROW) {
@@ -12,10 +16,12 @@ const Row: FunctionComponent = ({ children }) => {
 
   return (
     <FlexLayoutContext.Provider value={{ parent: FlexLayoutTypes.ROW }}>
-      <div className="flex-none flex-ns flex-row-ns">
-        {React.Children.map(children, child => (
-          <div className="w-100">{child}</div>
-        ))}
+      <div className={blockClass}>
+        <div className="flex-none flex-ns flex-row-ns">
+          {React.Children.map(children, child => (
+            <div className="w-100">{child}</div>
+          ))}
+        </div>
       </div>
     </FlexLayoutContext.Provider>
   )
