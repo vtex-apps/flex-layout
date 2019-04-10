@@ -33,9 +33,4 @@ const Col: FunctionComponent<BlockClass> = ({ children, blockClass }) => {
   )
 }
 
-(Col as any).schema = {
-  title: 'editor.column.title',
-  description: 'editor.column.description',
-}
-
 export default Col

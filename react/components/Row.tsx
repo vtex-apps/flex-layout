@@ -25,9 +25,4 @@ const Row: FunctionComponent<Props> = ({ children }) => {
   )
 }
 
-(Row as any).schema = {
-  title: 'editor.row.title',
-  description: 'editor.row.description',
-}
-
 export default Row
