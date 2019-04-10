@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dummy = () => {
+const FlexLayoutDummy = () => {
   console.warn(
     'You are inserting the `flex-layout` block directly. Please use `flex-layout.row` instead.'
   )
@@ -8,4 +8,4 @@ const Dummy = () => {
   return <span />
 }
 
-export default Dummy
+export default FlexLayoutDummy
