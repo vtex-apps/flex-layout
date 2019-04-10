@@ -3,7 +3,7 @@
     "component": "FlexLayoutDummy"
   },
   "flex-layout.row": {
-    "component": "Row",
+    "component": "FlexLayout",
     "composition": "children",
     "allowed": "*"
   },

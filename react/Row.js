@@ -1,8 +1,3 @@
-import FlexLayout from './components/FlexLayout'
+import Row from './components/Row'
 
-FlexLayout.schema = {
-  title: 'editor.row.title',
-  description: 'editor.row.description',
-}
-
-export default FlexLayout
+export default Row

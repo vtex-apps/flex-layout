@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.4.1] - 2019-04-10
+### Changed
+- Point `flex-layout.row` to `FlexLayout`, and expose `Row` entrypoint.
+
 ## [0.4.0] - 2019-04-10
 ### Added
 - Add schema in `Col` and `Row`.
