@@ -1,10 +1,13 @@
 {
-  "flex-row": {
+  "flex-layout": {
+    "component": "FlexLayoutDummy"
+  },
+  "flex-layout.row": {
     "component": "Row",
     "composition": "children",
     "allowed": "*"
   },
-  "flex-col": {
+  "flex-layout.col": {
     "component": "Col",
     "composition": "children",
     "allowed": "*"
