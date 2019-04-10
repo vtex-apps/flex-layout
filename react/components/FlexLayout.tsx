@@ -6,29 +6,34 @@ import Row from './Row'
 
 interface Props {
   fullWidth?: boolean
+  blockClass?: string
 }
 
-const FlexLayout: FunctionComponent<Props> = ({ fullWidth, children }) => {
+const FlexLayout: FunctionComponent<Props> = ({
+  fullWidth,
+  children,
+  blockClass,
+}) => {
   const context = useContext(FlexLayoutContext)
 
   const content = <Row>{children}</Row>
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
-  if (!isTopLevel) {
-    return content
+  if (fullWidth && !isTopLevel) {
+    console.warn(
+      'Prop `fullWidth` is allowed only on top-level `flex-layout.row` blocks.'
+    )
   }
 
-  if (fullWidth) {
-    if (!isTopLevel) {
-      console.warn(
-        'Prop fullWidth is allowed only on top-level flex-row blocks.'
-      )
-    }
-
-    return content
+  if (fullWidth || !isTopLevel) {
+    return <div className={blockClass}>{content}</div>
   }
 
-  return <Container>{content}</Container>
+  return (
+    <div className={blockClass}>
+      <Container>{content}</Container>
+    </div>
+  )
 }
 
 export default FlexLayout
