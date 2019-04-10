@@ -13,10 +13,5 @@
     "component": "Col",
     "composition": "children",
     "allowed": "*"
-  },
-  "flex-layout.column": {
-    "component": "Col",
-    "composition": "children",
-    "allowed": "*"
   }
 }
