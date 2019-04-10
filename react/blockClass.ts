@@ -7,5 +7,5 @@ export const generateBlockClass = (baseClass: string, blockClass?: string) =>
     : baseClass
 
 export interface BlockClass {
-  blockClass?: string
+  blockClass?: string,
 }

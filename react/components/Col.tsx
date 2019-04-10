@@ -7,7 +7,6 @@ import styles from './FlexLayout.css'
 
 const Col: FunctionComponent<BlockClass> = ({ children, blockClass }) => {
   const context = useContext(FlexLayoutContext)
-
   if (context.parent === FlexLayoutTypes.COL) {
     console.warn(
       'A `flex-layout.col` is being inserted directly into another `flex-layout.col`. This might might have unpredicted behaviour.'
