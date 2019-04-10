@@ -5,7 +5,7 @@ interface Props {
   blockClass?: string
 }
 
-const Row: FunctionComponent<Props> = ({ children, blockClass }) => {
+const Row: FunctionComponent<Props> = ({ children }) => {
   const context = useContext(FlexLayoutContext)
 
   if (context.parent === FlexLayoutTypes.ROW) {
@@ -16,12 +16,10 @@ const Row: FunctionComponent<Props> = ({ children, blockClass }) => {
 
   return (
     <FlexLayoutContext.Provider value={{ parent: FlexLayoutTypes.ROW }}>
-      <div className={blockClass}>
-        <div className="flex-none flex-ns flex-row-ns">
-          {React.Children.map(children, child => (
-            <div className="w-100">{child}</div>
-          ))}
-        </div>
+      <div className="flex-none flex-ns flex-row-ns">
+        {React.Children.map(children, child => (
+          <div className="w-100">{child}</div>
+        ))}
       </div>
     </FlexLayoutContext.Provider>
   )
