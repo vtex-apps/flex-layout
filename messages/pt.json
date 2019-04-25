@@ -1,0 +1,6 @@
+{ 
+  "editor.row.title": "Linha",
+  "editor.column.title": "Coluna",
+  "editor.row.description": "Componente de Linha para estrutura de layout flex",
+  "editor.column.description": "Componente de Coluna para estrutura de layout flex"
+}
