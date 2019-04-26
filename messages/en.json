@@ -1,0 +1,6 @@
+{ 
+  "editor.row.title": "Row",
+  "editor.column.title": "Column",
+  "editor.row.description": "Row component of flex layout structure",
+  "editor.column.description": "Column component of flex layout structure"
+}
