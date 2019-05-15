@@ -8,8 +8,10 @@ export enum FlexLayoutTypes {
 
 interface FlexLayoutContext {
   parent: FlexLayoutTypes
+  colGap: number
 }
 
 export const FlexLayoutContext = React.createContext<FlexLayoutContext>({
   parent: FlexLayoutTypes.NONE,
+  colGap: 0,
 })
