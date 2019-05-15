@@ -1,10 +1,16 @@
-import React, { useContext, FunctionComponent } from 'react'
-import { FlexLayoutContext, FlexLayoutTypes } from './components/FlexLayoutContext'
+import React, { useContext } from 'react'
+import {
+  FlexLayoutContext,
+  FlexLayoutTypes,
+} from './components/FlexLayoutContext'
 import { generateBlockClass, BlockClass } from '@vtex/css-handles'
 
 import styles from './components/FlexLayout.css'
 
-const Col: FunctionComponent<BlockClass> = ({ children, blockClass }) => {
+const Col: StorefrontFunctionComponent<BlockClass> = ({
+  children,
+  blockClass,
+}) => {
   const context = useContext(FlexLayoutContext)
   if (context.parent === FlexLayoutTypes.COL) {
     console.warn(
@@ -20,7 +26,9 @@ const Col: FunctionComponent<BlockClass> = ({ children, blockClass }) => {
   }
 
   return (
-    <FlexLayoutContext.Provider value={{ parent: FlexLayoutTypes.COL }}>
+    <FlexLayoutContext.Provider
+      value={{ parent: FlexLayoutTypes.COL, colGap: context.colGap }}
+    >
       <div className={generateBlockClass(styles.flexCol, blockClass)}>
         <div className="flex-ns flex-column">
           {React.Children.map(children, child => (
@@ -33,8 +41,8 @@ const Col: FunctionComponent<BlockClass> = ({ children, blockClass }) => {
 }
 
 Col.schema = {
-  title: 'editor.column.title',
-  description: 'editor.column.description',
+  title: 'admin/editor.column.title',
+  description: 'admin/editor.column.description',
 }
 
 export default Col
