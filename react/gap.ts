@@ -27,15 +27,4 @@ const resolveGapValue = (
   return typeof value === 'string' ? parseInt(value, 10) : value
 }
 
-const getGapClass = (gapValue: GapValue, index: number, count: number) => {
-  console.log(`getCapClass ${gapValue} ${index} ${count}`)
-  if (index >= count - 1) {
-    return ''
-  }
-  if (!gapValue) {
-    return ''
-  }
-  return `pr${gapValue}`
-}
-
-export { resolveGapValue, getGapClass }
+export { resolveGapValue }
