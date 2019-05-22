@@ -3,25 +3,24 @@ import { fromPairs, pick, range, toPairs } from 'ramda'
 export type TachyonsScaleInput = string | number | undefined
 type Group<T, U> = { [key in keyof T]: U }
 type TachyonsInputGroup<T> = Group<T, TachyonsScaleInput>
+interface ResponsiveInput<T> {
+  mobile: T
+  desktop: T
+}
 
 const MAX_TACHYONS_SCALE = 11
 
+//eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isResponsiveInput = <T>(value: any): value is ResponsiveInput<T> =>
+  value && value.mobile != null && value.desktop != null
+
 export const parseResponsive = <T, U>(parse: (value: T) => U) => (
-  value: T | T[]
+  value: T | ResponsiveInput<T>
 ): null | U | { mobile: U; desktop: U } => {
-  if (Array.isArray(value)) {
-    if (value.length !== 2) {
-      // TODO: warn about invalid responsive size
-      return null
-    }
-
-    const parsedValues = value.map(deviceValue => parse(deviceValue))
-
-    const [mobile, desktop] = parsedValues as [U, U]
-
+  if (isResponsiveInput(value)) {
     return {
-      mobile,
-      desktop,
+      mobile: parse(value.mobile),
+      desktop: parse(value.desktop),
     }
   }
 
