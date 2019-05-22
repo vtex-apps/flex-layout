@@ -1,29 +1,24 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Container from 'vtex.store-components/Container'
 
 import {
-  FlexLayoutContext,
   FlexLayoutTypes,
+  useFlexLayoutContext,
 } from './components/FlexLayoutContext'
-import Row from './Row'
+import Row, { Props as RowProps } from './Row'
 import { generateBlockClass, BlockClass } from '@vtex/css-handles'
 
 import styles from './components/FlexLayout.css'
 
-interface Props {
+interface Props extends RowProps {
   fullWidth?: boolean
-  colGap?: number | string
 }
 
-const FlexLayout: StorefrontFunctionComponent<Props & BlockClass> = ({
-  fullWidth,
-  children,
-  blockClass,
-  colGap,
-}) => {
-  const context = useContext(FlexLayoutContext)
+const FlexLayout: StorefrontFunctionComponent<Props & BlockClass> = props => {
+  const { fullWidth, blockClass } = props
+  const context = useFlexLayoutContext()
 
-  const content = <Row colGap={colGap}>{children}</Row>
+  const content = <Row {...props} />
 
   const baseClassNames = generateBlockClass(styles.flexRow, blockClass)
   const isTopLevel = context.parent === FlexLayoutTypes.NONE

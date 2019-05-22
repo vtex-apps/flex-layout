@@ -1,17 +1,58 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {
-  FlexLayoutContext,
   FlexLayoutTypes,
+  useFlexLayoutContext,
+  FlexLayoutContextProvider,
 } from './components/FlexLayoutContext'
-import { generateBlockClass, BlockClass } from '@vtex/css-handles'
+import { generateBlockClass } from '@vtex/css-handles'
 
 import styles from './components/FlexLayout.css'
 
-const Col: StorefrontFunctionComponent<BlockClass> = ({
+import {
+  TachyonsScaleInput,
+  parseTachyonsGroup,
+  parseMargins,
+  parsePaddings,
+} from './modules/valuesParser'
+
+interface Props extends Flex, Gap {
+  blockClass?: string
+  height?: string
+  marginLeft: TachyonsScaleInput
+  marginRight: TachyonsScaleInput
+  paddingLeft: TachyonsScaleInput
+  paddingRight: TachyonsScaleInput
+}
+
+const Col: StorefrontFunctionComponent<Props> = ({
   children,
   blockClass,
+  colGap,
+  rowGap,
+  marginLeft,
+  marginRight,
+  paddingLeft,
+  paddingRight,
+  stretchContent = true,
+  grow,
 }) => {
-  const context = useContext(FlexLayoutContext)
+  const context = useFlexLayoutContext()
+
+  const gaps = parseTachyonsGroup({
+    colGap: colGap != null ? colGap : context.colGap,
+    rowGap: rowGap != null ? rowGap : context.rowGap,
+  })
+
+  const margins = parseMargins({
+    marginLeft,
+    marginRight,
+  })
+
+  const paddings = parsePaddings({
+    paddingLeft,
+    paddingRight,
+  })
+
   if (context.parent === FlexLayoutTypes.COL) {
     console.warn(
       'A `flex-layout.col` is being inserted directly into another `flex-layout.col`. This might might have unpredicted behaviour.'
@@ -25,18 +66,31 @@ const Col: StorefrontFunctionComponent<BlockClass> = ({
     return null
   }
 
+  const rowsNum = React.Children.count(children)
+
   return (
-    <FlexLayoutContext.Provider
-      value={{ parent: FlexLayoutTypes.COL, colGap: context.colGap }}
-    >
-      <div className={generateBlockClass(styles.flexCol, blockClass)}>
-        <div className="flex-ns flex-column">
-          {React.Children.map(children, child => (
-            <div className="h-100">{child}</div>
-          ))}
-        </div>
+    <FlexLayoutContextProvider parent={FlexLayoutTypes.COL} {...gaps}>
+      <div
+        className={`${generateBlockClass(styles.flexCol, blockClass)} ${
+          grow ? 'flex-grow-1' : ''
+        } ${margins} ${paddings} flex flex-column h-100 w-100`}
+      >
+        {React.Children.map(children, (row, i) => {
+          const isLast = i === rowsNum - 1
+          const rowGap = isLast ? 0 : gaps.rowGap
+
+          return (
+            <div
+              key={i}
+              className={`pb${rowGap}`}
+              style={{ height: stretchContent ? '100%' : 'auto' }}
+            >
+              {row}
+            </div>
+          )
+        })}
       </div>
-    </FlexLayoutContext.Provider>
+    </FlexLayoutContextProvider>
   )
 }
 
