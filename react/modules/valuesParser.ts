@@ -14,6 +14,11 @@ const MAX_TACHYONS_SCALE = 11
 const isResponsiveInput = <T>(value: any): value is ResponsiveInput<T> =>
   value && value.mobile != null && value.desktop != null
 
+/** Takes a parser of units, and returns a parser that accepts either a
+ * value or a responsive input of that same type of value
+ * (i.e. {mobile: ..., desktop: ...}), and returns an object of the same
+ * format of the input.
+ */
 export const parseResponsive = <T, U>(parse: (value: T) => U) => (
   value: T | ResponsiveInput<T>
 ): null | U | { mobile: U; desktop: U } => {
@@ -27,6 +32,9 @@ export const parseResponsive = <T, U>(parse: (value: T) => U) => (
   return parse(value)
 }
 
+/** Verifies if the input is a valid Tachyons scale value (i.e. a number
+ * between 0 to 11) and converts to number if necessary
+ */
 const parseTachyonsValue = (value: TachyonsScaleInput, name?: string) => {
   if (!value) {
     return 0
