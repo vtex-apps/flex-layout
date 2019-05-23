@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Props `colGap`, `rowGap`, to add spacing between columns and rows.
+- Prop `preserveLayoutOnMobile`, to refrain from breaking columns into rows on small screens.
+- **Col:** Props `width`, `marginLeft/Right`, `paddingLeft/Right`, and `preventVerticalStretch`.
+- **Row:** Props `marginTop/Bottom`, `paddingTop/Bottom`, `preventHorizontalStretch`, and `preventVerticalStretch`.
 
 ## [0.4.2] - 2019-04-26
 
