@@ -22,6 +22,7 @@ interface Props extends Flex, Gap {
   marginRight: TachyonsScaleInput
   paddingLeft: TachyonsScaleInput
   paddingRight: TachyonsScaleInput
+  preventVerticalStretch?: boolean
 }
 
 const Col: StorefrontFunctionComponent<Props> = ({
@@ -33,8 +34,8 @@ const Col: StorefrontFunctionComponent<Props> = ({
   marginRight,
   paddingLeft,
   paddingRight,
-  stretchContent = true,
   grow,
+  preventVerticalStretch,
 }) => {
   const context = useFlexLayoutContext()
 
@@ -83,7 +84,7 @@ const Col: StorefrontFunctionComponent<Props> = ({
             <div
               key={i}
               className={`pb${rowGap}`}
-              style={{ height: stretchContent ? '100%' : 'auto' }}
+              style={{ height: preventVerticalStretch ? 'auto' : '100%' }}
             >
               {row}
             </div>
