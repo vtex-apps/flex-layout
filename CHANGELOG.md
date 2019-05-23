@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.1] - 2019-05-23
+
 ## [0.5.0] - 2019-05-23
 ### Added
 - Props `colGap`, `rowGap`, to add spacing between columns and rows.
