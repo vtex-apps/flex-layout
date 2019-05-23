@@ -15,6 +15,8 @@ import {
   parsePaddings,
 } from './modules/valuesParser'
 
+import styles from './Row.css'
+
 export interface Props extends Flex, Gap {
   blockClass?: string
   marginTop: TachyonsScaleInput
@@ -22,7 +24,6 @@ export interface Props extends Flex, Gap {
   paddingTop: TachyonsScaleInput
   paddingBottom: TachyonsScaleInput
   preserveLayoutOnMobile?: boolean
-  // TODO: implement this functionality
   preventHorizontalStretch?: boolean
   preventVerticalStretch?: boolean
 }
@@ -36,6 +37,8 @@ const Row: StorefrontFunctionComponent<Props> = ({
   paddingTop,
   paddingBottom,
   preserveLayoutOnMobile,
+  preventHorizontalStretch,
+  preventVerticalStretch,
 }) => {
   const context = useFlexLayoutContext()
 
@@ -85,7 +88,9 @@ const Row: StorefrontFunctionComponent<Props> = ({
                 breakOnMobile
                   ? `pr${colGap}-ns pb${rowGap} pb0-ns`
                   : `pr${colGap}`
-              } flex items-stretch`}
+              } ${preventVerticalStretch ? '' : 'items-stretch'} ${
+                preventHorizontalStretch ? '' : styles.stretchChildrenWidth
+              } flex`}
               style={{
                 width: breakOnMobile ? '100%' : col.width,
               }}

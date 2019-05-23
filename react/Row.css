@@ -1,0 +1,7 @@
+.stretchChildrenWidth {
+  justify-content: center;
+}
+
+.stretchChildrenWidth > *:not(img) {
+  width: 100%;
+}
