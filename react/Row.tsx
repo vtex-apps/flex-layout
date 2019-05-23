@@ -114,8 +114,8 @@ const messages = defineMessages({
 })
 
 Row.schema = {
-  title: messages.title,
-  description: messages.description,
+  title: messages.title.id,
+  description: messages.description.id,
 }
 
 export default Row

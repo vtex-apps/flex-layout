@@ -109,8 +109,8 @@ const messages = defineMessages({
 })
 
 Col.schema = {
-  title: messages.title,
-  description: messages.description,
+  title: messages.title.id,
+  description: messages.description.id,
 }
 
 export default Col

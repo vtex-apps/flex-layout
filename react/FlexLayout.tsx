@@ -53,8 +53,8 @@ const messages = defineMessages({
 })
 
 FlexLayout.schema = {
-  title: messages.title,
-  description: messages.description,
+  title: messages.title.id,
+  description: messages.description.id,
 }
 
 export default FlexLayout
