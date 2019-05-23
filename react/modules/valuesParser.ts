@@ -82,6 +82,8 @@ const parseDimension = (value: string): null | number => {
 
 export const parseWidth = parseResponsive(parseDimension)
 
+// TODO: allow responsive values on height
+// (and verify height usage overall)
 export const parseHeight = parseDimension
 
 const mapToClasses = <T>(map: { [key in keyof T]: string }) => (
@@ -98,6 +100,7 @@ const mapToClasses = <T>(map: { [key in keyof T]: string }) => (
   return mappedProps.join(' ')
 }
 
+// TODO: allow responsive values on paddings and margins
 export const parsePaddings = mapToClasses({
   paddingTop: 'pt',
   paddingBottom: 'pb',
