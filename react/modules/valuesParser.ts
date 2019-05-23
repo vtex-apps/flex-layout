@@ -63,6 +63,9 @@ export const parseWidth = parseResponsive(
     if (typeof width !== 'string') {
       return null
     }
+
+    // Accepts only % values for now (e.g. "50%")
+    // This parsing should improve once more formats are supported
     const parsedWidth = width.split('%')
 
     if (parsedWidth.length !== 2 && parsedWidth[1] !== '') {
