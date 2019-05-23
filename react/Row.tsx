@@ -6,7 +6,7 @@ import {
 } from './components/FlexLayoutContext'
 import { defineMessages } from 'react-intl'
 
-import { useResponsiveWidth } from './hooks/distributedWidth'
+import { useResponsiveWidth } from './hooks/responsiveWidth'
 import {
   parseTachyonsGroup,
   TachyonsScaleInput,
