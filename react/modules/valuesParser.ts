@@ -59,8 +59,9 @@ export const parseTachyonsGroup = <T>(group: TachyonsInputGroup<T>) => {
 }
 
 const parseDimension = (value: string): null | number => {
-  // Accepts only % values for now (e.g. "50%")
-  // This parsing should improve once more formats are supported
+  /** Accepts only % values for now (e.g. "50%")
+   * This parsing should improve once more formats are supported
+   **/
   if (typeof value !== 'string') {
     return null
   }
@@ -82,13 +83,15 @@ const parseDimension = (value: string): null | number => {
 
 export const parseWidth = parseResponsive(parseDimension)
 
-// TODO: allow responsive values on height
-// (and verify height usage overall)
+/** TODO: allow responsive values on height
+ * (and verify height usage overall)
+ **/
 export const parseHeight = parseDimension
 
 /** Maps objects keys to Tachyons classes, and returns a function
  * that parses Tachyons scale values to the mapped classes,
- * which in turn returns a string of classNames. */
+ * which in turn returns a string of classNames.
+ **/
 const mapToClasses = <T>(map: { [key in keyof T]: string }) => (
   props: { [key in keyof T]?: TachyonsScaleInput }
 ) => {
