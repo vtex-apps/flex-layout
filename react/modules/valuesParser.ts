@@ -86,6 +86,9 @@ export const parseWidth = parseResponsive(parseDimension)
 // (and verify height usage overall)
 export const parseHeight = parseDimension
 
+/** Maps objects keys to Tachyons classes, and returns a function
+ * that parses Tachyons scale values to the mapped classes,
+ * which in turn returns a string of classNames. */
 const mapToClasses = <T>(map: { [key in keyof T]: string }) => (
   props: { [key in keyof T]?: TachyonsScaleInput }
 ) => {
