@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useContext } from 'react'
+import React, { FunctionComponent, useContext, useMemo } from 'react'
 
 export enum FlexLayoutTypes {
   NONE = 'none',
@@ -27,14 +27,17 @@ const FlexLayoutContext = React.createContext<FlexLayoutContext>({
 export const FlexLayoutContextProvider: FunctionComponent<
   FlexLayoutContextProps
 > = ({ parent, colGap, rowGap, children }) => {
+  const value = useMemo(
+    () => ({
+      parent,
+      colGap,
+      rowGap,
+    }),
+    [parent, colGap, rowGap]
+  )
+
   return (
-    <FlexLayoutContext.Provider
-      value={{
-        parent,
-        colGap,
-        rowGap,
-      }}
-    >
+    <FlexLayoutContext.Provider value={value}>
       {children}
     </FlexLayoutContext.Provider>
   )
