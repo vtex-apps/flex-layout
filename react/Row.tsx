@@ -4,10 +4,8 @@ import {
   FlexLayoutContextProvider,
   useFlexLayoutContext,
 } from './components/FlexLayoutContext'
-import {
-  useResponsiveWidth,
-  distributeAvailableWidth,
-} from './hooks/distributedWidth'
+import { defineMessages } from 'react-intl'
+
 import {
   parseTachyonsGroup,
   TachyonsScaleInput,
@@ -104,9 +102,20 @@ const Row: StorefrontFunctionComponent<Props> = ({
   )
 }
 
+const messages = defineMessages({
+  title: {
+    defaultMessage: '',
+    id: 'admin/editor.row.title',
+  },
+  description: {
+    defaultMessage: '',
+    id: 'admin/editor.row.description',
+  },
+})
+
 Row.schema = {
-  title: 'admin/editor.row.title',
-  description: 'admin/editor.row.description',
+  title: messages.title,
+  description: messages.description,
 }
 
 export default Row

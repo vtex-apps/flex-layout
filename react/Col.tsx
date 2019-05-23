@@ -1,4 +1,6 @@
 import React from 'react'
+import { defineMessages } from 'react-intl'
+
 import {
   FlexLayoutTypes,
   useFlexLayoutContext,
@@ -95,9 +97,20 @@ const Col: StorefrontFunctionComponent<Props> = ({
   )
 }
 
+const messages = defineMessages({
+  title: {
+    defaultMessage: '',
+    id: 'admin/editor.column.title',
+  },
+  description: {
+    defaultMessage: '',
+    id: 'admin/editor.column.description',
+  },
+})
+
 Col.schema = {
-  title: 'admin/editor.column.title',
-  description: 'admin/editor.column.description',
+  title: messages.title,
+  description: messages.description,
 }
 
 export default Col

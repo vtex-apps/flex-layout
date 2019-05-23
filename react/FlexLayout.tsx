@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from 'vtex.store-components/Container'
+import { defineMessages } from 'react-intl'
 
 import {
   FlexLayoutTypes,
@@ -40,9 +41,20 @@ const FlexLayout: StorefrontFunctionComponent<Props & BlockClass> = props => {
   )
 }
 
+const messages = defineMessages({
+  title: {
+    defaultMessage: '',
+    id: 'admin/editor.row.title',
+  },
+  description: {
+    defaultMessage: '',
+    id: 'admin/editor.row.description',
+  },
+})
+
 FlexLayout.schema = {
-  title: 'editor.row.title',
-  description: 'editor.row.description',
+  title: messages.title,
+  description: messages.description,
 }
 
 export default FlexLayout
