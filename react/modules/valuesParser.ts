@@ -58,44 +58,31 @@ export const parseTachyonsGroup = <T>(group: TachyonsInputGroup<T>) => {
   return fromPairs(parsedValues) as Group<T, number>
 }
 
-export const parseWidth = parseResponsive(
-  (width: string): null | number => {
-    if (typeof width !== 'string') {
-      return null
-    }
-
-    // Accepts only % values for now (e.g. "50%")
-    // This parsing should improve once more formats are supported
-    const parsedWidth = width.split('%')
-
-    if (parsedWidth.length !== 2 && parsedWidth[1] !== '') {
-      return null
-    }
-    const parsedWidthValue = parseInt(parsedWidth[0], 10)
-
-    if (String(parsedWidthValue) !== parsedWidth[0]) {
-      return null
-    }
-    return parsedWidthValue
-  }
-)
-
-export const parseHeight = (width: string | string[]) => {
-  if (!(typeof width === 'string')) {
+const parseDimension = (value: string): null | number => {
+  // Accepts only % values for now (e.g. "50%")
+  // This parsing should improve once more formats are supported
+  if (typeof value !== 'string') {
     return null
   }
-  const parsedWidth = width.split('%')
 
-  if (parsedWidth.length !== 2 && parsedWidth[1] !== '') {
+  const split = value.split('%')
+
+  if (split.length !== 2 && split[1] !== '') {
     return null
   }
-  const parsedWidthValue = parseInt(parsedWidth[0], 10)
+  const parsedValue = parseInt(split[0], 10)
 
-  if (String(parsedWidthValue) !== parsedWidth[0]) {
+  // Sanity check
+  if (String(parsedValue) !== split[0]) {
     return null
   }
-  return parsedWidthValue
+
+  return parsedValue
 }
+
+export const parseWidth = parseResponsive(parseDimension)
+
+export const parseHeight = parseDimension
 
 const mapToClasses = <T>(map: { [key in keyof T]: string }) => (
   props: { [key in keyof T]?: TachyonsScaleInput }
