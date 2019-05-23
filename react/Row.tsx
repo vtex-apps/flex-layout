@@ -6,6 +6,7 @@ import {
 } from './components/FlexLayoutContext'
 import { defineMessages } from 'react-intl'
 
+import { useResponsiveWidth } from './hooks/distributedWidth'
 import {
   parseTachyonsGroup,
   TachyonsScaleInput,
@@ -59,8 +60,6 @@ const Row: StorefrontFunctionComponent<Props> = ({
     preserveLayoutOnMobile,
   })
 
-  const distributedWidth = distributeAvailableWidth(cols)
-
   if (context.parent === FlexLayoutTypes.ROW) {
     console.warn(
       'A flex-row is being inserted directly into another flex-row. This might have unpredicted behaviour.'
@@ -74,7 +73,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
         } ${margins} ${paddings} items-stretch w-100`}
       >
-        {distributedWidth.map((col, i) => {
+        {cols.map((col, i) => {
           const isLast = i === cols.length - 1
           const colGap = isLast ? 0 : gaps.colGap
           const rowGap = isLast ? 0 : gaps.rowGap
@@ -93,7 +92,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
                 width: breakOnMobile ? '100%' : col.width,
               }}
             >
-              {col.col}
+              {col.element}
             </div>
           )
         })}

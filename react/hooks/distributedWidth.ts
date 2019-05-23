@@ -7,72 +7,11 @@ interface DistributedWidthOptions {
   preserveLayoutOnMobile?: boolean
 }
 
-interface ColWidth {
-  col: React.ReactNode
+interface ColWithWidth {
+  element: React.ReactNode
   width: number
   hasDefinedWidth: boolean
   isResponsive: boolean
-}
-
-export const useResponsiveWidth = (
-  children: React.ReactNode,
-  options: DistributedWidthOptions
-) => {
-  const {
-    hints: { desktop },
-  } = useRuntime()
-
-  const isDesktop = useMedia({ minWidth: '40rem' }, desktop)
-  const isMobile = !isDesktop
-
-  const { preserveLayoutOnMobile = false } = options || {}
-
-  const cols: ColWidth[] = React.Children.toArray(children).map(col => {
-    const width = parseWidth((col as ReactElement).props.width)
-
-    if (width && typeof width === 'object') {
-      return {
-        col,
-        width: isMobile ? width.mobile || 0 : width.desktop || 0,
-        hasDefinedWidth: true,
-        isResponsive: true,
-      }
-    }
-
-    if (!preserveLayoutOnMobile && isMobile) {
-      return {
-        col,
-        width: 0,
-        hasDefinedWidth: false,
-        isResponsive: false,
-      }
-    }
-
-    if (typeof width === 'number') {
-      return {
-        col,
-        width,
-        hasDefinedWidth: true,
-        isResponsive: false,
-      }
-    }
-
-    return {
-      col,
-      width: 0,
-      hasDefinedWidth: false,
-      isResponsive: true,
-    }
-  })
-
-  const isAnyColResponsive = cols.some(col => col.isResponsive)
-  const breakOnMobile =
-    !preserveLayoutOnMobile && isMobile && !isAnyColResponsive
-
-  return {
-    cols,
-    breakOnMobile,
-  }
 }
 
 /** Distributes the available width--width that remains after subtracting
@@ -83,7 +22,7 @@ export const useResponsiveWidth = (
  * There are 3 columns. The user sets the width for the first one to 50%.
  * This function will set the widths of the second and third columns to 25%.
  */
-export const distributeAvailableWidth = (cols: ColWidth[]) => {
+const distributeAvailableWidth = (cols: ColWithWidth[]) => {
   const { availableWidth, remainingColsNum } = cols.reduce(
     (acc, col) => ({
       availableWidth: acc.availableWidth - col.width,
@@ -107,11 +46,72 @@ export const distributeAvailableWidth = (cols: ColWidth[]) => {
   }
 
   return cols.map(col => ({
-    col: col.col,
+    element: col.element,
     width: `${
       col.hasDefinedWidth
         ? col.width
         : Math.floor(Math.max(0, availableWidth) / remainingColsNum)
     }%`,
   }))
+}
+
+export const useResponsiveWidth = (
+  children: React.ReactNode,
+  options: DistributedWidthOptions
+) => {
+  const {
+    hints: { desktop },
+  } = useRuntime()
+
+  const isDesktop = useMedia({ minWidth: '40rem' }, desktop)
+  const isMobile = !isDesktop
+
+  const { preserveLayoutOnMobile = false } = options || {}
+
+  const cols: ColWithWidth[] = React.Children.toArray(children).map(col => {
+    const width = parseWidth((col as ReactElement).props.width)
+
+    if (width && typeof width === 'object') {
+      return {
+        element: col,
+        width: isMobile ? width.mobile || 0 : width.desktop || 0,
+        hasDefinedWidth: true,
+        isResponsive: true,
+      }
+    }
+
+    if (!preserveLayoutOnMobile && isMobile) {
+      return {
+        element: col,
+        width: 0,
+        hasDefinedWidth: false,
+        isResponsive: false,
+      }
+    }
+
+    if (typeof width === 'number') {
+      return {
+        element: col,
+        width,
+        hasDefinedWidth: true,
+        isResponsive: false,
+      }
+    }
+
+    return {
+      element: col,
+      width: 0,
+      hasDefinedWidth: false,
+      isResponsive: true,
+    }
+  })
+
+  const isAnyColResponsive = cols.some(col => col.isResponsive)
+  const breakOnMobile =
+    !preserveLayoutOnMobile && isMobile && !isAnyColResponsive
+
+  return {
+    cols: distributeAvailableWidth(cols),
+    breakOnMobile,
+  }
 }
