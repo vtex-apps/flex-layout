@@ -82,6 +82,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
             <div
               key={i}
               className={`${
+                /** If it breaks line on mobile, use the rowGap as bottom padding */
                 breakOnMobile
                   ? `pr${colGap}-ns pb${rowGap} pb0-ns`
                   : `pr${colGap}`
