@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ## [0.5.1] - 2019-05-23
+### Fixed
+- Fixed missing `id` from schemas.
 
 ## [0.5.0] - 2019-05-23
 ### Added
