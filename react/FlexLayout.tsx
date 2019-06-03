@@ -1,24 +1,25 @@
-import React, { useContext, FunctionComponent } from 'react'
+import React from 'react'
 import Container from 'vtex.store-components/Container'
+import { defineMessages } from 'react-intl'
 
-import { FlexLayoutContext, FlexLayoutTypes } from './components/FlexLayoutContext'
-import Row from './Row'
+import {
+  FlexLayoutTypes,
+  useFlexLayoutContext,
+} from './components/FlexLayoutContext'
+import Row, { Props as RowProps } from './Row'
 import { generateBlockClass, BlockClass } from '@vtex/css-handles'
 
 import styles from './components/FlexLayout.css'
 
-interface Props {
+interface Props extends RowProps {
   fullWidth?: boolean
 }
 
-const FlexLayout: FunctionComponent<Props & BlockClass> = ({
-  fullWidth,
-  children,
-  blockClass,
-}) => {
-  const context = useContext(FlexLayoutContext)
+const FlexLayout: StorefrontFunctionComponent<Props & BlockClass> = props => {
+  const { fullWidth, blockClass } = props
+  const context = useFlexLayoutContext()
 
-  const content = <Row>{children}</Row>
+  const content = <Row {...props} />
 
   const baseClassNames = generateBlockClass(styles.flexRow, blockClass)
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
@@ -40,9 +41,20 @@ const FlexLayout: FunctionComponent<Props & BlockClass> = ({
   )
 }
 
+const messages = defineMessages({
+  title: {
+    defaultMessage: '',
+    id: 'admin/editor.row.title',
+  },
+  description: {
+    defaultMessage: '',
+    id: 'admin/editor.row.description',
+  },
+})
+
 FlexLayout.schema = {
-  title: 'editor.row.title',
-  description: 'editor.row.description',
+  title: messages.title.id,
+  description: messages.description.id,
 }
 
 export default FlexLayout

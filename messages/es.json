@@ -1,6 +1,6 @@
 { 
-  "editor.row.title": "Línea",
-  "editor.column.title": "Columna",
-  "editor.row.description": "Componente de Línea para estructura de layout flex",
-  "editor.column.description": "Componente de Columna para estructura de layout flex"
+  "admin/editor.row.title": "Línea",
+  "admin/editor.column.title": "Columna",
+  "admin/editor.row.description": "Componente de Línea para estructura de layout flex",
+  "admin/editor.column.description": "Componente de Columna para estructura de layout flex"
 }

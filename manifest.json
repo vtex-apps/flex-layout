@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "flex-layout",
-  "version": "0.4.2",
+  "version": "0.5.1",
   "title": "VTEX flex layout component",
   "defaultLocale": "pt-BR",
   "description": "VTEX flex layout component",
@@ -17,5 +17,6 @@
   },
   "dependencies": {
     "vtex.store-components": "3.x"
-  }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
