@@ -16,6 +16,18 @@ import {
 
 import styles from './Row.css'
 
+enum HorizontalAlign {
+  left = 'left',
+  right = 'right',
+  center = 'center',
+}
+
+const HORIZONTAL_ALIGN_MAP = {
+  left: 'justify-start',
+  center: 'justify-center',
+  right: 'justify-end',
+}
+
 export interface Props extends Flex, Gap {
   blockClass?: string
   marginTop: TachyonsScaleInput
@@ -25,6 +37,7 @@ export interface Props extends Flex, Gap {
   preserveLayoutOnMobile?: boolean
   preventHorizontalStretch?: boolean
   preventVerticalStretch?: boolean
+  horizontalAlign?: HorizontalAlign
 }
 
 const Row: StorefrontFunctionComponent<Props> = ({
@@ -38,6 +51,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
   preserveLayoutOnMobile,
   preventHorizontalStretch,
   preventVerticalStretch,
+  horizontalAlign,
 }) => {
   const context = useFlexLayoutContext()
 
@@ -66,12 +80,16 @@ const Row: StorefrontFunctionComponent<Props> = ({
     )
   }
 
+  const horizontalAlignClass =
+    HORIZONTAL_ALIGN_MAP[horizontalAlign || HorizontalAlign.left] ||
+    HORIZONTAL_ALIGN_MAP.left
+
   return (
     <FlexLayoutContextProvider parent={FlexLayoutTypes.ROW} {...gaps}>
       <div
         className={`${
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
-        } ${margins} ${paddings} items-stretch w-100`}
+        } ${margins} ${paddings} ${horizontalAlignClass} items-stretch w-100`}
       >
         {cols.map((col, i) => {
           const isLast = i === cols.length - 1
@@ -90,7 +108,11 @@ const Row: StorefrontFunctionComponent<Props> = ({
                 preventHorizontalStretch ? '' : styles.stretchChildrenWidth
               } flex`}
               style={{
-                width: breakOnMobile ? '100%' : col.width,
+                width: preventHorizontalStretch
+                  ? 'auto'
+                  : breakOnMobile
+                  ? '100%'
+                  : col.width,
               }}
             >
               {col.element}

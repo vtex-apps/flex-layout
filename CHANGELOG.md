@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.0] - 2019-06-03
+### Added
+- Props `horizontalAlign` and `preventHorizontalStretch` to Row.
+
 ## [0.5.1] - 2019-05-23
 ### Fixed
 - Fixed missing `id` from schemas.
