@@ -82,7 +82,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
 
   const horizontalAlignClass =
     HORIZONTAL_ALIGN_MAP[horizontalAlign || HorizontalAlign.left] ||
-    HorizontalAlign.left
+    HORIZONTAL_ALIGN_MAP.left
 
   return (
     <FlexLayoutContextProvider parent={FlexLayoutTypes.ROW} {...gaps}>
