@@ -8,7 +8,7 @@
     "@types/ramda": "^0.26.8",
     "@types/react": "^16.8.13",
     "@types/react-intl": "^2.3.17",
-    "@vtex/css-handles": "^1.0.2",
+    "@vtex/css-handles": "^1.1.3",
     "classnames": "^2.2.6",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
