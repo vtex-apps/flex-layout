@@ -28,6 +28,11 @@ const HORIZONTAL_ALIGN_MAP = {
   right: 'justify-end',
 }
 
+enum ColSizing {
+  equal = 'equal',
+  distributed = 'distributed',
+}
+
 export interface Props extends Flex, Gap {
   blockClass?: string
   marginTop: TachyonsScaleInput
@@ -38,6 +43,7 @@ export interface Props extends Flex, Gap {
   preventHorizontalStretch?: boolean
   preventVerticalStretch?: boolean
   horizontalAlign?: HorizontalAlign
+  colSizing?: ColSizing
 }
 
 const Row: StorefrontFunctionComponent<Props> = ({
@@ -52,6 +58,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
   preventHorizontalStretch,
   preventVerticalStretch,
   horizontalAlign,
+  colSizing,
 }) => {
   const context = useFlexLayoutContext()
 
@@ -80,6 +87,8 @@ const Row: StorefrontFunctionComponent<Props> = ({
     )
   }
 
+  const isSizingDistributed = colSizing === ColSizing.distributed
+
   const horizontalAlignClass =
     HORIZONTAL_ALIGN_MAP[horizontalAlign || HorizontalAlign.left] ||
     HORIZONTAL_ALIGN_MAP.left
@@ -89,7 +98,9 @@ const Row: StorefrontFunctionComponent<Props> = ({
       <div
         className={`${
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
-        } ${margins} ${paddings} ${horizontalAlignClass} items-stretch w-100`}
+        } ${margins} ${paddings} ${horizontalAlignClass} ${
+          isSizingDistributed ? 'justify-between' : ''
+        } items-stretch w-100`}
       >
         {cols.map((col, i) => {
           const isLast = i === cols.length - 1
@@ -108,11 +119,12 @@ const Row: StorefrontFunctionComponent<Props> = ({
                 preventHorizontalStretch ? '' : styles.stretchChildrenWidth
               } flex`}
               style={{
-                width: preventHorizontalStretch
-                  ? 'auto'
-                  : breakOnMobile
-                  ? '100%'
-                  : col.width,
+                width:
+                  preventHorizontalStretch || isSizingDistributed
+                    ? 'auto'
+                    : breakOnMobile
+                    ? '100%'
+                    : col.width,
               }}
             >
               {col.element}
