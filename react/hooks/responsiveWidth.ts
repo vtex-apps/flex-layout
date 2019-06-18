@@ -52,6 +52,7 @@ const distributeAvailableWidth = (cols: ColWithWidth[]) => {
         ? col.width
         : Math.floor(Math.max(0, availableWidth) / remainingColsNum)
     }%`,
+    hasDefinedWidth: col.hasDefinedWidth,
   }))
 }
 

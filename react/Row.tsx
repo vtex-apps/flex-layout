@@ -120,7 +120,8 @@ const Row: StorefrontFunctionComponent<Props> = ({
               } flex`}
               style={{
                 width:
-                  preventHorizontalStretch || isSizingDistributed
+                  preventHorizontalStretch ||
+                  (isSizingDistributed && !col.hasDefinedWidth)
                     ? 'auto'
                     : breakOnMobile
                     ? '100%'
