@@ -30,7 +30,7 @@ const HORIZONTAL_ALIGN_MAP = {
 
 enum ColSizing {
   equal = 'equal',
-  distributed = 'distributed',
+  auto = 'auto',
 }
 
 export interface Props extends Flex, Gap {
@@ -87,7 +87,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
     )
   }
 
-  const isSizingDistributed = colSizing === ColSizing.distributed
+  const isSizingAuto = colSizing === ColSizing.auto
 
   const horizontalAlignClass =
     HORIZONTAL_ALIGN_MAP[horizontalAlign || HorizontalAlign.left] ||
@@ -99,7 +99,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
         className={`${
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
         } ${margins} ${paddings} ${horizontalAlignClass} ${
-          isSizingDistributed ? 'justify-between' : ''
+          isSizingAuto ? 'justify-between' : ''
         } items-stretch w-100`}
       >
         {cols.map((col, i) => {
@@ -121,7 +121,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
               style={{
                 width:
                   preventHorizontalStretch ||
-                  (isSizingDistributed && !col.hasDefinedWidth)
+                  (isSizingAuto && !col.hasDefinedWidth)
                     ? 'auto'
                     : breakOnMobile
                     ? '100%'
