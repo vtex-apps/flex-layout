@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
-import { useMedia } from 'use-media'
-import { useRuntime } from 'vtex.render-runtime'
+import { useDevice } from 'vtex.device-detector'
 import { parseWidth } from '../modules/valuesParser'
 
 interface DistributedWidthOptions {
@@ -60,12 +59,7 @@ export const useResponsiveWidth = (
   children: React.ReactNode,
   options: DistributedWidthOptions
 ) => {
-  const {
-    hints: { desktop },
-  } = useRuntime()
-
-  const isDesktop = useMedia({ minWidth: '40rem' }, desktop)
-  const isMobile = !isDesktop
+  const { isMobile } = useDevice()
 
   const { preserveLayoutOnMobile = false } = options || {}
 
