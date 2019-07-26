@@ -59,7 +59,9 @@ export const useResponsiveWidth = (
   children: React.ReactNode,
   options: DistributedWidthOptions
 ) => {
-  const { isMobile } = useDevice()
+  const { device } = useDevice()
+
+  const isPhone = device === 'phone'
 
   const { preserveLayoutOnMobile = false } = options || {}
 
@@ -69,13 +71,13 @@ export const useResponsiveWidth = (
     if (width && typeof width === 'object') {
       return {
         element: col,
-        width: isMobile ? width.mobile || 0 : width.desktop || 0,
+        width: isPhone ? width.mobile || 0 : width.desktop || 0,
         hasDefinedWidth: true,
         isResponsive: true,
       }
     }
 
-    if (!preserveLayoutOnMobile && isMobile) {
+    if (!preserveLayoutOnMobile && isPhone) {
       return {
         element: col,
         width: 0,
@@ -103,7 +105,7 @@ export const useResponsiveWidth = (
 
   const isAnyColResponsive = cols.some(col => col.isResponsive)
   const breakOnMobile =
-    !preserveLayoutOnMobile && isMobile && !isAnyColResponsive
+    !preserveLayoutOnMobile && isPhone && !isAnyColResponsive
 
   return {
     cols: distributeAvailableWidth(cols),
