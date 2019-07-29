@@ -66,25 +66,31 @@ export const parseTachyonsGroup = <T>(group: TachyonsInputGroup<T>) => {
   return fromPairs(parsedValues) as Group<T, number>
 }
 
-const parseDimension = (value: string): null | number => {
-  /** Accepts only % values for now (e.g. "50%")
-   * This parsing should improve once more formats are supported
-   **/
-  if (typeof value !== 'string') {
+const parseDimension = (input: string): null | number | string => {
+  if (typeof input !== 'string') {
     return null
   }
 
-  const split = value.split('%')
+  if (input === 'grow') {
+    return 'grow'
+  }
 
-  if (split.length !== 2 && split[1] !== '') {
+  const supportedUnits = ['%']
+  const match = input.match(new RegExp(`(\\d*)(${supportedUnits.join('|')})`))
+
+  if (!match) {
     return null
   }
-  const parsedValue = parseInt(split[0], 10)
 
-  // Sanity check
-  if (String(parsedValue) !== split[0]) {
+  const value = match[1]
+  // TODO: support multiple units
+  // const unit = match[2]
+
+  if (value == null) {
     return null
   }
+
+  const parsedValue = parseInt(value, 10)
 
   return parsedValue
 }
