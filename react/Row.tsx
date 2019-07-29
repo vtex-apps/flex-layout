@@ -117,7 +117,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
                   : `pr${colGap}`
               } ${preventVerticalStretch ? '' : 'items-stretch'} ${
                 preventHorizontalStretch ? '' : styles.stretchChildrenWidth
-              } flex`}
+              } ${col.width === 'grow' ? 'flex-grow-1' : ''} flex`}
               style={{
                 width:
                   preventHorizontalStretch ||
