@@ -31,6 +31,13 @@ const HORIZONTAL_ALIGN_MAP = {
 enum ColSizing {
   equal = 'equal',
   auto = 'auto',
+  autoAround = 'auto-around',
+}
+
+const autoJustifyTokens: Record<ColSizing, string> = {
+  [ColSizing.auto]: 'justify-between',
+  [ColSizing.autoAround]: 'justify-around',
+  [ColSizing.equal]: '',
 }
 
 export interface Props extends Flex, Gap {
@@ -87,7 +94,9 @@ const Row: StorefrontFunctionComponent<Props> = ({
     )
   }
 
-  const isSizingAuto = colSizing === ColSizing.auto
+  const isSizingAuto =
+    colSizing === ColSizing.auto || colSizing === ColSizing.autoAround
+  const sizingAutoToken = isSizingAuto ? autoJustifyTokens[colSizing!] : ''
 
   const horizontalAlignClass =
     HORIZONTAL_ALIGN_MAP[horizontalAlign || HorizontalAlign.left] ||
@@ -98,9 +107,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
       <div
         className={`${
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
-        } ${margins} ${paddings} ${horizontalAlignClass} ${
-          isSizingAuto ? 'justify-between' : ''
-        } items-stretch w-100`}
+        } ${margins} ${paddings} ${horizontalAlignClass} ${sizingAutoToken} items-stretch w-100`}
       >
         {cols.map((col, i) => {
           const isLast = i === cols.length - 1
