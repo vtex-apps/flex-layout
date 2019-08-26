@@ -105,6 +105,9 @@ const Col: StorefrontFunctionComponent<Props> = ({
     return null
   }
 
+  const vertical = parseVerticalAlign(verticalAlign)
+  const horizontal = parseHorizontalAlign(horizontalAlign)
+
   const rowsNum = React.Children.count(children)
 
   return (
@@ -112,11 +115,7 @@ const Col: StorefrontFunctionComponent<Props> = ({
       <div
         className={`${generateBlockClass(styles.flexCol, blockClass)} ${
           grow ? 'flex-grow-1' : ''
-        } ${margins} ${paddings} ${parseVerticalAlign(
-          verticalAlign
-        )} ${parseHorizontalAlign(
-          horizontalAlign
-        )} flex flex-column h-100 w-100`}
+        } ${margins} ${paddings} ${vertical} ${horizontal} flex flex-column h-100 w-100`}
       >
         {React.Children.map(children, (row, i) => {
           const isLast = i === rowsNum - 1
