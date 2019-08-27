@@ -58,7 +58,6 @@ This props should be edited at your theme's `blocks.json`:
 | `grow`                   | `Boolean`            | Whether or not the `flex-grow-1` token should be applied to this column.                                                   | `undefined`   |
 | `preventVerticalStretch` | `Boolean`            | Prevents the row from stretching vertically to fill its parent height with `height: 100%`, using `height: "auto"` instead. | `false`       |
 
-Note that `TachyonsScaleInput` could be a String or a Number, and represents the magnitude you want to pass down as a prop considering the Tachyons Scale. For example, if you want your `flex-layout.row` to have a top margin of `mt5`, you could do: `"marginTop": 5` or `"marginTop": "5"`.
 
 ## Styles API
 
