@@ -33,49 +33,32 @@ This props should be edited at your theme's `blocks.json`:
 | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- | ------------- |
 | `blockClass`               | `String`              | Unique class name to be appended to block container class                                                     | `""`          |
 | `fullWidth`                | `Boolean`             | Whether or not the component should ocuppy all the available width from its parent                            | `false`       |
-| `marginTop`                | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `mt` Tachyons token to be applied to this row.                       | `undefined`   |
-| `marginBottom`             | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to this row.                       | `undefined`   |
-| `paddingTop`               | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pt` Tachyons token to be applied to this row.                       | `undefined`   |
-| `paddingBottom`            | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to this row.                       | `undefined`   |
+| `marginTop`                | `0...10`  | A `number` or `string` magnitude for the `mt` Tachyons token to be applied to this row.                       | `undefined`   |
+| `marginBottom`             | `0...10`  | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to this row.                       | `undefined`   |
+| `paddingTop`               | `0...10`  | A `number` or `string` magnitude for the `pt` Tachyons token to be applied to this row.                       | `undefined`   |
+| `paddingBottom`            | `0...10`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to this row.                       | `undefined`   |
 | `preserveLayoutOnMobile`   | `Boolean`             | Whether or not the flex-row should break into a column layout on mobile.                                      | `false`       |
 | `preventHorizontalStretch` | `Boolean`             | Prevents the row from stretching horizontally to fill its parent width.                                       | `false`       |
 | `preventVerticalStretch`   | `Boolean`             | Prevents the row from stretching vertically to fill its parent height with `items-stretch` token.             | `false`       |
-| `horizontalAlign`          | `HorizontalAlignEnum` | Controls horizontal alignment for the items inside the flex-row.                                              | `left`        |
-| `colSizing`                | `ColSizingEnum`       | Controls the width of the columns inside the flex-row.                                                        | `equal`       |
-| `colGap`                   | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
-| `rowGap`                   | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
+| `horizontalAlign`          | `left|right|center` | Controls horizontal alignment for the items inside the flex-row.                                              | `left`        |
+| `colSizing`                | `equal|auto`       | Controls the width of the columns inside the flex-row.                                                        | `equal`       |
+| `colGap`                   | `0...10`  | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
+| `rowGap`                   | `0...10`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
 
 #### flex-layout.col
 
 | Prop name                | Type                 | Description                                                                                                                | Default value |
 | ------------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | `blockClass`             | `String`             | Unique class name to be appended to block container class                                                                  | `""`          |
-| `rowGap`                 | `TachyonsScaleInput` | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to rows inside of the flex-column.              | `undefined`   |
+| `rowGap`                 | `0...10` | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to rows inside of the flex-column.              | `undefined`   |
 | `marginLeft`             | `TachyonsScaleInput` | A `number` or `string` magnitude for the `ml` Tachyons token to be applied to this row.                                    | `undefined`   |
-| `marginRight`            | `TachyonsScaleInput` | A `number` or `string` magnitude for the `mr` Tachyons token to be applied to this column.                                 | `undefined`   |
-| `paddingLeft`            | `TachyonsScaleInput` | A `number` or `string` magnitude for the `pl` Tachyons token to be applied to this column.                                 | `undefined`   |
-| `paddingRight`           | `TachyonsScaleInput` | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to this column.                                 | `undefined`   |
+| `marginRight`            | `0...10` | A `number` or `string` magnitude for the `mr` Tachyons token to be applied to this column.                                 | `undefined`   |
+| `paddingLeft`            | `0...10` | A `number` or `string` magnitude for the `pl` Tachyons token to be applied to this column.                                 | `undefined`   |
+| `paddingRight`           | `0...10` | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to this column.                                 | `undefined`   |
 | `grow`                   | `Boolean`            | Whether or not the `flex-grow-1` token should be applied to this column.                                                   | `undefined`   |
 | `preventVerticalStretch` | `Boolean`            | Prevents the row from stretching vertically to fill its parent height with `height: 100%`, using `height: "auto"` instead. | `false`       |
 
-#### Types
-
 Note that `TachyonsScaleInput` could be a String or a Number, and represents the magnitude you want to pass down as a prop considering the Tachyons Scale. For example, if you want your `flex-layout.row` to have a top margin of `mt5`, you could do: `"marginTop": 5` or `"marginTop": "5"`.
-
-`HorizontalAlignEnum` description:
-
-| Enum name | Enum value | Description                    |
-| --------- | ---------- | ------------------------------ |
-| left      | 'left'     | Items will align to the left.  |
-| right     | 'right'    | Items will align to the right. |
-| center    | 'center'   | Items will be centered.        |
-
-`ColSizingEnum` description:
-
-| Enum name | Enum value | Description                                               |
-| --------- | ---------- | --------------------------------------------------------- |
-| equal     | 'equal'    | Columns will have equal width.                            |
-| auto      | 'auto'     | Each column will have its width according to its content. |
 
 ## Styles API
 
