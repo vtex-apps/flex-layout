@@ -51,7 +51,7 @@ This props should be edited at your theme's `blocks.json`:
 | ------------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | `blockClass`             | `String`             | Unique class name to be appended to block container class                                                                  | `""`          |
 | `rowGap`                 | `0...10` | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to rows inside of the flex-column.              | `undefined`   |
-| `marginLeft`             | `TachyonsScaleInput` | A `number` or `string` magnitude for the `ml` Tachyons token to be applied to this row.                                    | `undefined`   |
+| `marginLeft`             | `0...10` | A `number` or `string` magnitude for the `ml` Tachyons token to be applied to this row.                                    | `undefined`   |
 | `marginRight`            | `0...10` | A `number` or `string` magnitude for the `mr` Tachyons token to be applied to this column.                                 | `undefined`   |
 | `paddingLeft`            | `0...10` | A `number` or `string` magnitude for the `pl` Tachyons token to be applied to this column.                                 | `undefined`   |
 | `paddingRight`           | `0...10` | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to this column.                                 | `undefined`   |
