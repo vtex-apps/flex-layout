@@ -8,7 +8,7 @@ There two basic building blocks of every `flex-layout`, the `flex-layout.row` co
 
 Since `flex-layout` should be widely used to achieve different layouts, its interface is very permissive:
 
-```
+```json
 "flex-layout.row": {
   "component": "FlexLayout",
   "composition": "children",
@@ -25,20 +25,57 @@ Notice that you could use _any_ array of blocks as `children`, given that they a
 
 ### Configuration
 
-This props should be edited at your theme's `blocks.json`
+This props should be edited at your theme's `blocks.json`:
 
-| Prop name    | Type           | Description                                               | Default value |
-| ------------ | -------------- | --------------------------------------------------------- | ------------- |
-| `blockClass` | `String`       | Unique class name to be appended to block container class | `""`          |
-| `position`   | `PositionEnum` | Indicates where the component should stick                | N/A           |
-| `zIndex`     | `Number`       | Controls the `sticky-layout` wrapper z-index              | 999           |
+#### flex-layout.row
 
-`PositionEnum` description:
+| Prop name                  | Type                  | Description                                                                                                   | Default value |
+| -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- | ------------- |
+| `blockClass`               | `String`              | Unique class name to be appended to block container class                                                     | `""`          |
+| `fullWidth`                | `Boolean`             | Whether or not the component should ocuppy all the available width from its parent                            | `false`       |
+| `marginTop`                | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `mt` Tachyons token to be applied to this row.                       | `undefined`   |
+| `marginBottom`             | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to this row.                       | `undefined`   |
+| `paddingTop`               | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pt` Tachyons token to be applied to this row.                       | `undefined`   |
+| `paddingBottom`            | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to this row.                       | `undefined`   |
+| `preserveLayoutOnMobile`   | `Boolean`             | Whether or not the flex-row should break into a column layout on mobile.                                      | `false`       |
+| `preventHorizontalStretch` | `Boolean`             | Prevents the row from stretching horizontally to fill its parent width.                                       | `false`       |
+| `preventVerticalStretch`   | `Boolean`             | Prevents the row from stretching vertically to fill its parent height with `items-stretch` token.             | `false`       |
+| `horizontalAlign`          | `HorizontalAlignEnum` | Controls horizontal alignment for the items inside the flex-row.                                              | `left`        |
+| `colSizing`                | `ColSizingEnum`       | Controls the width of the columns inside the flex-row.                                                        | `equal`       |
+| `colGap`                   | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
+| `rowGap`                   | `TachyonsScaleInput`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
 
-| Enum name | Enum value | Description                                  |
-| --------- | ---------- | -------------------------------------------- |
-| BOTTOM    | 'bottom'   | Component will stick to the bottom of screen |
-| TOP       | 'top'      | Component will stick to the top of screen    |
+#### flex-layout.col
+
+| Prop name                | Type                 | Description                                                                                                                | Default value |
+| ------------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `blockClass`             | `String`             | Unique class name to be appended to block container class                                                                  | `""`          |
+| `rowGap`                 | `TachyonsScaleInput` | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to rows inside of the flex-column.              | `undefined`   |
+| `marginLeft`             | `TachyonsScaleInput` | A `number` or `string` magnitude for the `ml` Tachyons token to be applied to this row.                                    | `undefined`   |
+| `marginRight`            | `TachyonsScaleInput` | A `number` or `string` magnitude for the `mr` Tachyons token to be applied to this column.                                 | `undefined`   |
+| `paddingLeft`            | `TachyonsScaleInput` | A `number` or `string` magnitude for the `pl` Tachyons token to be applied to this column.                                 | `undefined`   |
+| `paddingRight`           | `TachyonsScaleInput` | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to this column.                                 | `undefined`   |
+| `grow`                   | `Boolean`            | Whether or not the `flex-grow-1` token should be applied to this column.                                                   | `undefined`   |
+| `preventVerticalStretch` | `Boolean`            | Prevents the row from stretching vertically to fill its parent height with `height: 100%`, using `height: "auto"` instead. | `false`       |
+
+#### Types
+
+Note that `TachyonsScaleInput` could be a String or a Number, and represents the magnitude you want to pass down as a prop considering the Tachyons Scale. For example, if you want your `flex-layout.row` to have a top margin of `mt5`, you could do: `"marginTop": 5` or `"marginTop": "5"`.
+
+`HorizontalAlignEnum` description:
+
+| Enum name | Enum value | Description                    |
+| --------- | ---------- | ------------------------------ |
+| left      | 'left'     | Items will align to the left.  |
+| right     | 'right'    | Items will align to the right. |
+| center    | 'center'   | Items will be centered.        |
+
+`ColSizingEnum` description:
+
+| Enum name | Enum value | Description                                               |
+| --------- | ---------- | --------------------------------------------------------- |
+| equal     | 'equal'    | Columns will have equal width.                            |
+| auto      | 'auto'     | Each column will have its width according to its content. |
 
 ## Styles API
 
@@ -49,9 +86,9 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 1. Add the `styles` builder to your `manifest.json`:
 
 ```json
-  "builders": {
-    "styles": "1.x"
-  }
+"builders": {
+  "styles": "1.x"
+}
 ```
 
 2. Create a file called `vtex.flex-layout.css` inside the `styles/css` folder. Add your custom styles:
@@ -86,45 +123,45 @@ Below, we describe the namespaces that are defined by `flex-layout`.
 This was taken from our default `store-theme`:
 
 ```json
-  "flex-layout.row#about-us": {
-    "children": [
-      "image#mobile-phone",
-      "flex-layout.col#text-about-us"
-    ]
-  },
+"flex-layout.row#about-us": {
+  "children": [
+    "image#mobile-phone",
+    "flex-layout.col#text-about-us"
+  ]
+},
 
-  "flex-layout.col#text-about-us": {
-    "children": [
-      "rich-text#title-about-us",
-      "rich-text#about-us"
-    ],
-    "props": {
-      "blockclass": "textColumn",
-      "preventVerticalStretch": true
-    }
-  },
-
-  "rich-text#title-about-us": {
-    "props": {
-      "text":
-      "# Create meaningful and relevant experiences.",
-      "blockClass": "title"
-    }
-  },
-
-  "image#mobile-phone": {
-    "props": {
-      "src": "https://storecomponents.vteximg.com.br/arquivos/mobile-phone.png",
-      "maxHeight": "",
-      "maxWidth": "",
-      "blockClass": "storePrint"
-    }
-  },
-
-  "rich-text#about-us": {
-    "props": {
-      "text": "**Optimized store framework** \n Free your front-end with our React + Node store framework. Improve usability and SEO, while driving more conversion with modular components, single-page applications, and a ready-for-PWA structure. \n **Multi-currency and language** \n Go international with multiple storefronts to support different languages and easily manage local currencies and payment conditions. \n **Serverless development platform** \n Reduce loading time, improve usability, and make the best out of SEO. Developing scalable components with a comprehensive, easy-to-use toolset, you can build stores faster than ever.",
-      "blockClass": "about"
-    }
+"flex-layout.col#text-about-us": {
+  "children": [
+    "rich-text#title-about-us",
+    "rich-text#about-us"
+  ],
+  "props": {
+    "blockclass": "textColumn",
+    "preventVerticalStretch": true
   }
+},
+
+"rich-text#title-about-us": {
+  "props": {
+    "text":
+    "# Create meaningful and relevant experiences.",
+    "blockClass": "title"
+  }
+},
+
+"image#mobile-phone": {
+  "props": {
+    "src": "https://storecomponents.vteximg.com.br/arquivos/mobile-phone.png",
+    "maxHeight": "",
+    "maxWidth": "",
+    "blockClass": "storePrint"
+  }
+},
+
+"rich-text#about-us": {
+  "props": {
+    "text": "**Optimized store framework** \n Free your front-end with our React + Node store framework. Improve usability and SEO, while driving more conversion with modular components, single-page applications, and a ready-for-PWA structure. \n **Multi-currency and language** \n Go international with multiple storefronts to support different languages and easily manage local currencies and payment conditions. \n **Serverless development platform** \n Reduce loading time, improve usability, and make the best out of SEO. Developing scalable components with a comprehensive, easy-to-use toolset, you can build stores faster than ever.",
+    "blockClass": "about"
+  }
+}
 ```
