@@ -25,7 +25,10 @@ const distributeAvailableWidth = (cols: ColWithWidth[]) => {
   const { availableWidth, remainingColsNum, hasAnyWidthGrow } = cols.reduce(
     (acc, col) => {
       const isGrow = col.width === 'grow'
-      const width = typeof col.width === 'number' ? col.width : 0
+      const width = typeof col.width === 'number'
+        ? acc.availableWidth - col.width
+        : 0
+
       return {
         availableWidth: isGrow ? 0 : width,
         remainingColsNum: acc.remainingColsNum + (col.hasDefinedWidth ? 0 : 1),
@@ -59,7 +62,7 @@ const distributeAvailableWidth = (cols: ColWithWidth[]) => {
       element: col.element,
       width: col.hasDefinedWidth
         ? definedWidth
-        : Math.floor(Math.max(0, availableWidth) / remainingColsNum),
+        : `${Math.floor(Math.max(0, availableWidth) / remainingColsNum)}%`,
       hasDefinedWidth: col.hasDefinedWidth,
     }
   })
