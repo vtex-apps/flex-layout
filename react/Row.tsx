@@ -33,6 +33,16 @@ enum ColSizing {
   auto = 'auto',
 }
 
+enum ColJustify {
+  between = 'between',
+  around = 'around',
+}
+
+const JustifyValues = {
+  [ColJustify.between]: 'justify-between',
+  [ColJustify.around]: 'justify-around',
+}
+
 export interface Props extends Flex, Gap {
   blockClass?: string
   marginTop: TachyonsScaleInput
@@ -44,6 +54,7 @@ export interface Props extends Flex, Gap {
   preventVerticalStretch?: boolean
   horizontalAlign?: HorizontalAlign
   colSizing?: ColSizing
+  colJustify?: ColJustify
 }
 
 const Row: StorefrontFunctionComponent<Props> = ({
@@ -59,6 +70,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
   preventVerticalStretch,
   horizontalAlign,
   colSizing,
+  colJustify = ColJustify.between,
 }) => {
   const context = useFlexLayoutContext()
 
@@ -89,6 +101,9 @@ const Row: StorefrontFunctionComponent<Props> = ({
 
   const isSizingAuto = colSizing === ColSizing.auto
 
+  const justifyToken =
+    JustifyValues[colJustify] || JustifyValues[ColJustify.between]
+
   const horizontalAlignClass =
     HORIZONTAL_ALIGN_MAP[horizontalAlign || HorizontalAlign.left] ||
     HORIZONTAL_ALIGN_MAP.left
@@ -99,7 +114,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
         className={`${
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
         } ${margins} ${paddings} ${horizontalAlignClass} ${
-          isSizingAuto ? 'justify-between' : ''
+          isSizingAuto ? justifyToken : ''
         } items-stretch w-100`}
       >
         {cols.map((col, i) => {
