@@ -40,8 +40,8 @@ This props should be edited at your theme's `blocks.json`:
 | `preserveLayoutOnMobile`   | `Boolean`             | Whether or not the flex-row should break into a column layout on mobile.                                      | `false`       |
 | `preventHorizontalStretch` | `Boolean`             | Prevents the row from stretching horizontally to fill its parent width.                                       | `false`       |
 | `preventVerticalStretch`   | `Boolean`             | Prevents the row from stretching vertically to fill its parent height with `items-stretch` token.             | `false`       |
-| `horizontalAlign`          | `left|right|center` | Controls horizontal alignment for the items inside the flex-row.                                              | `left`        |
-| `colSizing`                | `equal|auto`       | Controls the width of the columns inside the flex-row.                                                        | `equal`       |
+| `horizontalAlign`          | `left`&#124;`right`&#124;`center` | Controls horizontal alignment for the items inside the flex-row.                                              | `left`        |
+| `colSizing`                | `equal`&#124;`auto`       | Controls the width of the columns inside the flex-row.                                                        | `equal`       |
 | `colGap`                   | `0...10`  | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
 | `rowGap`                   | `0...10`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to columns inside of the flex-row. | `undefined`   |
 
