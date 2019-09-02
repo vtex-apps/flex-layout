@@ -85,10 +85,11 @@ To use this CSS API, you must add the `styles` builder and create an app styling
 
 Below, we describe the namespaces that are defined by `flex-layout`.
 
-| Class name | Description                |
-| ---------- | -------------------------- |
-| `flexRow`  | The container of a row.    |
-| `flexCol`  | The container of a column. |
+| Class name      | Description                    |
+| --------------- | ------------------------------ |
+| `flexRow`       | The container of a row.        |
+| `flexCol`       | The container of a column.     |
+| `flexColChild`  | The child element of a column. |
 
 ## Rules and recommendations
 
