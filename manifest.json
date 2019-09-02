@@ -1,14 +1,15 @@
 {
   "vendor": "vtex",
   "name": "flex-layout",
-  "version": "0.7.2",
+  "version": "0.9.0",
   "title": "VTEX flex layout component",
   "defaultLocale": "pt-BR",
   "description": "VTEX flex layout component",
   "builders": {
     "react": "3.x",
     "store": "0.x",
-    "messages": "1.x"
+    "messages": "1.x",
+    "docs": "0.x"
   },
   "mustUpdateAt": "2020-04-02",
   "categories": [],
