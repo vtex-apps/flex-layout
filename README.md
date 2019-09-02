@@ -55,7 +55,9 @@ This props should be edited at your theme's `blocks.json`:
 | `marginRight`            | `0...10` | A `number` or `string` magnitude for the `mr` Tachyons token to be applied to this column.                                 | `undefined`   |
 | `paddingLeft`            | `0...10` | A `number` or `string` magnitude for the `pl` Tachyons token to be applied to this column.                                 | `undefined`   |
 | `paddingRight`           | `0...10` | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to this column.                                 | `undefined`   |
-| `grow`                   | `Boolean`            | Whether or not the `flex-grow-1` token should be applied to this column.                                                   | `undefined`   |
+| `horizontalAlign`          | `left`&#124;`right`&#124;`center` | Controls horizontal alignment for the items inside the flex-col.                                              | `left`        |
+| `verticalAlign`          | `top`&#124;`middle`&#124;`bottom` | Controls vertical alignment for the items inside the flex-col.                                              | `top`        |
+| `width`                  | `"0...100%"`&#124;`"grow" | Sets the width of the column. Accepts either a percentage, or `"grow"`. | `undefined` |
 | `preventVerticalStretch` | `Boolean`            | Prevents the row from stretching vertically to fill its parent height with `height: 100%`, using `height: "auto"` instead. | `false`       |
 
 
