@@ -85,7 +85,10 @@ const Col: StorefrontFunctionComponent<Props> = ({
           return (
             <div
               key={i}
-              className={`pb${rowGap}`}
+            className={`${generateBlockClass(
+                styles.flexColChild,
+                blockClass
+              )}  pb${rowGap}`}
               style={{ height: preventVerticalStretch ? 'auto' : '100%' }}
             >
               {row}
