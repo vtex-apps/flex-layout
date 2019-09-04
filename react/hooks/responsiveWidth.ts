@@ -8,7 +8,7 @@ interface DistributedWidthOptions {
 
 interface ColWithWidth {
   element: React.ReactNode
-  width: number
+  width: number | string
   hasDefinedWidth: boolean
   isResponsive: boolean
 }
@@ -22,37 +22,53 @@ interface ColWithWidth {
  * This function will set the widths of the second and third columns to 25%.
  */
 const distributeAvailableWidth = (cols: ColWithWidth[]) => {
-  const { availableWidth, remainingColsNum } = cols.reduce(
-    (acc, col) => ({
-      availableWidth: acc.availableWidth - col.width,
-      remainingColsNum: acc.remainingColsNum + (col.hasDefinedWidth ? 0 : 1),
-    }),
+  const { availableWidth, remainingColsNum, hasAnyWidthGrow } = cols.reduce(
+    (acc, col) => {
+      const isGrow = col.width === 'grow'
+      const width =
+        typeof col.width === 'number' ? acc.availableWidth - col.width : 0
+
+      return {
+        availableWidth: isGrow ? 0 : width,
+        remainingColsNum: acc.remainingColsNum + (col.hasDefinedWidth ? 0 : 1),
+        hasAnyWidthGrow: acc.hasAnyWidthGrow || isGrow,
+      }
+    },
     {
       availableWidth: 100,
       remainingColsNum: 0,
+      hasAnyWidthGrow: false,
     }
   )
 
-  if (availableWidth < 0) {
+  if (availableWidth < 0 && !hasAnyWidthGrow) {
     console.warn(
       'Total width set for columns of a flex-layout.row block exceeds 100%.'
     )
     const normalization = -(100 / availableWidth)
     cols = cols.map(col => ({
       ...col,
-      width: col.width * normalization,
+      width:
+        typeof col.width === 'number' ? col.width * normalization : col.width,
     }))
   }
 
-  return cols.map(col => ({
-    element: col.element,
-    width: `${
-      col.hasDefinedWidth
-        ? col.width
-        : Math.floor(Math.max(0, availableWidth) / remainingColsNum)
-    }%`,
-    hasDefinedWidth: col.hasDefinedWidth,
-  }))
+  return cols.map(col => {
+    const definedWidth =
+      typeof col.width === 'number' ? `${col.width}%` : col.width
+
+    return {
+      element: col.element,
+      width: col.hasDefinedWidth
+        ? definedWidth
+        : `${Math.floor(Math.max(0, availableWidth) / remainingColsNum)}%`,
+      hasDefinedWidth: col.hasDefinedWidth,
+    }
+  })
+}
+
+function isReactElement(element: any): element is ReactElement {
+  return !!element && element.props
 }
 
 export const useResponsiveWidth = (
@@ -66,7 +82,18 @@ export const useResponsiveWidth = (
   const { preserveLayoutOnMobile = false } = options || {}
 
   const cols: ColWithWidth[] = React.Children.toArray(children).map(col => {
-    const width = parseWidth((col as ReactElement).props.width)
+    if (!isReactElement(col)) {
+      return {
+        element: col,
+        width: 0,
+        hasDefinedWidth: false,
+        isResponsive: true,
+      }
+    }
+
+    const width = parseWidth(
+      col.props.width || (col.props.blockProps && col.props.blockProps.width)
+    )
 
     if (width && typeof width === 'object') {
       return {
@@ -86,7 +113,7 @@ export const useResponsiveWidth = (
       }
     }
 
-    if (typeof width === 'number') {
+    if (typeof width === 'number' || typeof width === 'string') {
       return {
         element: col,
         width,

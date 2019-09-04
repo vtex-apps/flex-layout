@@ -17,6 +17,18 @@ import {
   parsePaddings,
 } from './modules/valuesParser'
 
+enum VerticalAlign {
+  top = 'top',
+  middle = 'middle',
+  bottom = 'bottom',
+}
+
+enum HorizontalAlign {
+  left = 'left',
+  right = 'right',
+  center = 'center',
+}
+
 interface Props extends Flex, Gap {
   blockClass?: string
   height?: string
@@ -25,6 +37,28 @@ interface Props extends Flex, Gap {
   paddingLeft: TachyonsScaleInput
   paddingRight: TachyonsScaleInput
   preventVerticalStretch?: boolean
+  verticalAlign?: VerticalAlign
+  horizontalAlign?: HorizontalAlign
+}
+
+const parseVerticalAlign = (input?: string) => {
+  switch (input) {
+    case VerticalAlign.middle:
+      return 'justify-center'
+    case VerticalAlign.bottom:
+      return 'justify-end'
+  }
+  return ''
+}
+
+const parseHorizontalAlign = (input?: string) => {
+  switch (input) {
+    case HorizontalAlign.center:
+      return 'items-center'
+    case HorizontalAlign.right:
+      return 'items-end'
+  }
+  return ''
 }
 
 const Col: StorefrontFunctionComponent<Props> = ({
@@ -38,6 +72,8 @@ const Col: StorefrontFunctionComponent<Props> = ({
   paddingRight,
   grow,
   preventVerticalStretch,
+  verticalAlign,
+  horizontalAlign,
 }) => {
   const context = useFlexLayoutContext()
 
@@ -69,6 +105,9 @@ const Col: StorefrontFunctionComponent<Props> = ({
     return null
   }
 
+  const vertical = parseVerticalAlign(verticalAlign)
+  const horizontal = parseHorizontalAlign(horizontalAlign)
+
   const rowsNum = React.Children.count(children)
 
   return (
@@ -76,7 +115,7 @@ const Col: StorefrontFunctionComponent<Props> = ({
       <div
         className={`${generateBlockClass(styles.flexCol, blockClass)} ${
           grow ? 'flex-grow-1' : ''
-        } ${margins} ${paddings} flex flex-column h-100 w-100`}
+        } ${margins} ${paddings} ${vertical} ${horizontal} flex flex-column h-100 w-100`}
       >
         {React.Children.map(children, (row, i) => {
           const isLast = i === rowsNum - 1
@@ -85,11 +124,14 @@ const Col: StorefrontFunctionComponent<Props> = ({
           return (
             <div
               key={i}
-            className={`${generateBlockClass(
+              className={`${generateBlockClass(
                 styles.flexColChild,
                 blockClass
-              )}  pb${rowGap}`}
-              style={{ height: preventVerticalStretch ? 'auto' : '100%' }}
+              )} pb${rowGap}`}
+              style={{
+                height:
+                  preventVerticalStretch || verticalAlign ? 'auto' : '100%',
+              }}
             >
               {row}
             </div>
