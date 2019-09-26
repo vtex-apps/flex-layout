@@ -1,4 +1,5 @@
 import React from 'react'
+import { useResponsiveValues } from 'vtex.responsive-values'
 import { defineMessages } from 'react-intl'
 
 import {
@@ -64,17 +65,21 @@ const parseHorizontalAlign = (input?: string) => {
 const Col: StorefrontFunctionComponent<Props> = ({
   children,
   blockClass,
-  colGap,
-  rowGap,
-  marginLeft,
-  marginRight,
-  paddingLeft,
-  paddingRight,
-  grow,
-  preventVerticalStretch,
-  verticalAlign,
-  horizontalAlign,
+  ...props
 }) => {
+  const {
+    colGap,
+    rowGap,
+    marginLeft,
+    marginRight,
+    paddingLeft,
+    paddingRight,
+    grow,
+    preventVerticalStretch,
+    verticalAlign,
+    horizontalAlign,
+  } = useResponsiveValues(props) as Props
+
   const context = useFlexLayoutContext()
 
   const gaps = parseTachyonsGroup({
