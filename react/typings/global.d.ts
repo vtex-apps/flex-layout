@@ -26,4 +26,12 @@ declare global {
     stretchContent: boolean
     grow: boolean
   }
+
+  type BorderBase = 'top' | 'right' | 'bottom' | 'left' | 'all'
+
+  interface Border {
+    border: BorderBase[]
+    borderWidth: TachyonsScaleInput
+    borderColor: string
+  }
 }

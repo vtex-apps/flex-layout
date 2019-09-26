@@ -12,6 +12,7 @@ import {
   TachyonsScaleInput,
   parseMargins,
   parsePaddings,
+  parseBorders,
 } from './modules/valuesParser'
 
 import styles from './Row.css'
@@ -43,7 +44,7 @@ const JustifyValues = {
   [ColJustify.around]: 'justify-around',
 }
 
-export interface Props extends Flex, Gap {
+export interface Props extends Flex, Gap, Border {
   blockClass?: string
   marginTop: TachyonsScaleInput
   marginBottom: TachyonsScaleInput
@@ -65,6 +66,9 @@ const Row: StorefrontFunctionComponent<Props> = ({
   marginBottom,
   paddingTop,
   paddingBottom,
+  border,
+  borderWidth,
+  borderColor,
   preserveLayoutOnMobile,
   preventHorizontalStretch,
   preventVerticalStretch,
@@ -87,6 +91,12 @@ const Row: StorefrontFunctionComponent<Props> = ({
   const paddings = parsePaddings({
     paddingTop,
     paddingBottom,
+  })
+
+  const borders = parseBorders({
+    border,
+    borderWidth,
+    borderColor,
   })
 
   const { cols, breakOnMobile } = useResponsiveWidth(children, {
@@ -113,7 +123,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
       <div
         className={`${
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
-        } ${margins} ${paddings} ${horizontalAlignClass} ${
+        } ${margins} ${paddings} ${borders} ${horizontalAlignClass} ${
           isSizingAuto ? justifyToken : ''
         } items-stretch w-100`}
       >

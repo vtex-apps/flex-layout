@@ -16,6 +16,7 @@ import {
   parseTachyonsGroup,
   parseMargins,
   parsePaddings,
+  parseBorders,
 } from './modules/valuesParser'
 
 enum VerticalAlign {
@@ -30,7 +31,7 @@ enum HorizontalAlign {
   center = 'center',
 }
 
-interface Props extends Flex, Gap {
+interface Props extends Flex, Gap, Border {
   blockClass?: string
   height?: string
   marginLeft: TachyonsScaleInput
@@ -74,6 +75,9 @@ const Col: StorefrontFunctionComponent<Props> = ({
     marginRight,
     paddingLeft,
     paddingRight,
+    border,
+    borderWidth,
+    borderColor,
     grow,
     preventVerticalStretch,
     verticalAlign,
@@ -95,6 +99,12 @@ const Col: StorefrontFunctionComponent<Props> = ({
   const paddings = parsePaddings({
     paddingLeft,
     paddingRight,
+  })
+
+  const borders = parseBorders({
+    border,
+    borderWidth,
+    borderColor,
   })
 
   if (context.parent === FlexLayoutTypes.COL) {
@@ -120,7 +130,7 @@ const Col: StorefrontFunctionComponent<Props> = ({
       <div
         className={`${generateBlockClass(styles.flexCol, blockClass)} ${
           grow ? 'flex-grow-1' : ''
-        } ${margins} ${paddings} ${vertical} ${horizontal} flex flex-column h-100 w-100`}
+        } ${margins} ${paddings} ${borders} ${vertical} ${horizontal} flex flex-column h-100 w-100`}
       >
         {React.Children.map(children, (row, i) => {
           const isLast = i === rowsNum - 1
