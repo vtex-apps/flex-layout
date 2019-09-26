@@ -64,10 +64,10 @@ const parseHorizontalAlign = (input?: string) => {
 
 const Col: StorefrontFunctionComponent<Props> = ({
   children,
-  blockClass,
   ...props
 }) => {
   const {
+    blockClass,
     colGap,
     rowGap,
     marginLeft,

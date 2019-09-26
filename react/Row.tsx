@@ -1,5 +1,4 @@
 import React from 'react'
-import { useResponsiveValues } from 'vtex.responsive-values'
 import {
   FlexLayoutTypes,
   FlexLayoutContextProvider,
@@ -58,22 +57,21 @@ export interface Props extends Flex, Gap {
   colJustify?: ColJustify
 }
 
-const Row: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
-  const {
-    colGap,
-    rowGap,
-    marginTop,
-    marginBottom,
-    paddingTop,
-    paddingBottom,
-    preserveLayoutOnMobile,
-    preventHorizontalStretch,
-    preventVerticalStretch,
-    horizontalAlign,
-    colSizing,
-    colJustify = ColJustify.between,
-  } = useResponsiveValues(props) as Props
-
+const Row: StorefrontFunctionComponent<Props> = ({
+  children,
+  colGap,
+  rowGap,
+  marginTop,
+  marginBottom,
+  paddingTop,
+  paddingBottom,
+  preserveLayoutOnMobile,
+  preventHorizontalStretch,
+  preventVerticalStretch,
+  horizontalAlign,
+  colSizing,
+  colJustify = ColJustify.between,
+}) => {
   const context = useFlexLayoutContext()
 
   const gaps = parseTachyonsGroup({
