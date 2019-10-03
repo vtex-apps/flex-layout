@@ -25,13 +25,13 @@ Notice that you could use _any_ array of blocks as `children`, given that they a
 
 ### Configuration
 
-This props should be edited at your theme's `blocks.json`:
+The props below should be edited at your theme's `blocks.json`. They support [`responsive-values`](https://github.com/vtex-apps/responsive-values), so you can define to the same prop different values based on the screen size.
 
 #### flex-layout.row
 
 | Prop name                  | Type                  | Description                                                                                                   | Default value |
 | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- | ------------- |
-| `blockClass`               | `String`              | Unique class name to be appended to block container class                                                     | `""`          |
+| `blockClass`               | `String`              | Unique class name to be appended to block container class                                                     | `""`          |
 | `fullWidth`                | `Boolean`             | Whether or not the component should ocuppy all the available width from its parent                            | `false`       |
 | `marginTop`                | `0...10`  | A `number` or `string` magnitude for the `mt` Tachyons token to be applied to this row.                       | `undefined`   |
 | `marginBottom`             | `0...10`  | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to this row.                       | `undefined`   |
@@ -49,7 +49,7 @@ This props should be edited at your theme's `blocks.json`:
 
 | Prop name                | Type                 | Description                                                                                                                | Default value |
 | ------------------------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `blockClass`             | `String`             | Unique class name to be appended to block container class                                                                  | `""`          |
+| `blockClass`             | `String`             | Unique class name to be appended to block container class                                                                  | `""`          |
 | `rowGap`                 | `0...10` | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to rows inside of the flex-column.              | `undefined`   |
 | `marginLeft`             | `0...10` | A `number` or `string` magnitude for the `ml` Tachyons token to be applied to this row.                                    | `undefined`   |
 | `marginRight`            | `0...10` | A `number` or `string` magnitude for the `mr` Tachyons token to be applied to this column.                                 | `undefined`   |

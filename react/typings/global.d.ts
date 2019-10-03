@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import { TachyonsScaleInput } from '../hooks/tachyons'
+import { TachyonsScaleInput } from '../modules/valuesParser'
 
 declare global {
   interface StorefrontFunctionComponent<P = {}> extends FunctionComponent<P> {

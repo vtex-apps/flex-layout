@@ -1,5 +1,6 @@
 import React from 'react'
 import Container from 'vtex.store-components/Container'
+import { useResponsiveValues } from 'vtex.responsive-values'
 import { defineMessages } from 'react-intl'
 
 import {
@@ -16,10 +17,11 @@ interface Props extends RowProps {
 }
 
 const FlexLayout: StorefrontFunctionComponent<Props & BlockClass> = props => {
-  const { fullWidth, blockClass } = props
+  const responsiveProps = useResponsiveValues(props) as Props
+  const { fullWidth, blockClass } = responsiveProps
   const context = useFlexLayoutContext()
 
-  const content = <Row {...props} />
+  const content = <Row {...responsiveProps} />
 
   const baseClassNames = generateBlockClass(styles.flexRow, blockClass)
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
