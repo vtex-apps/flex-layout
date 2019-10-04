@@ -134,3 +134,23 @@ export const parseMargins = mapToClasses({
   marginLeft: 'ml',
   marginRight: 'mr',
 })
+
+const borderMap = {
+  top: 'bt',
+  right: 'br',
+  bottom: 'bb',
+  left: 'bl',
+  all: 'ba',
+}
+
+export const parseBorders = ({
+  border,
+  borderWidth,
+  borderColor,
+}: Border) => {
+  const borders = border ? border.map(base => borderMap[base]).join(' ') : ''
+  const width = borderWidth ? `bw${parseTachyonsValue(borderWidth, 'bw')}` : ''
+  const color = borderColor ? `b--${borderColor.split(' ')[0]}` : ''
+
+  return `${borders} ${width} ${color}`
+}
