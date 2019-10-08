@@ -143,12 +143,13 @@ const borderMap = {
   all: 'ba',
 }
 
-export const parseBorders = ({
-  border,
-  borderWidth,
-  borderColor,
-}: Border) => {
-  const borders = border ? border.map(base => borderMap[base]).join(' ') : ''
+export const parseBorders = ({ border, borderWidth, borderColor }: Border) => {
+  const borders = border
+    ? ([] as BorderBase[])
+        .concat(border)
+        .map(base => borderMap[base])
+        .join(' ')
+    : ''
   const width = borderWidth ? `bw${parseTachyonsValue(borderWidth, 'bw')}` : ''
   const color = borderColor ? `b--${borderColor.split(' ')[0]}` : ''
 
