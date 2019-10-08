@@ -30,7 +30,7 @@ declare global {
   type BorderBase = 'top' | 'right' | 'bottom' | 'left' | 'all'
 
   interface Border {
-    border: BorderBase[]
+    border: BorderBase | BorderBase[]
     borderWidth: TachyonsScaleInput
     borderColor: string
   }
