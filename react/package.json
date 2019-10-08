@@ -5,18 +5,14 @@
     "react": "^16.8.6",
     "react-intl": "^2.9.0"
   },
-  "scripts": {
-    "test": "vtex-test-tools test"
-  },
   "devDependencies": {
     "@types/graphql": "^14.2.0",
-    "@types/jest": "^24.0.18",
+    "@types/jest": "^24.0.11",
     "@types/node": "^11.13.2",
     "@types/ramda": "^0.26.8",
     "@types/react": "^16.8.13",
     "@types/react-intl": "^2.3.17",
     "@vtex/test-tools": "^0.3.2",
     "eslint-config-vtex-react": "^5.0.1"
-  },
-  "version": "0.12.1"
+  }
 }
