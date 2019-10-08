@@ -63,10 +63,7 @@ const parseHorizontalAlign = (input?: string) => {
   return ''
 }
 
-const Col: StorefrontFunctionComponent<Props> = ({
-  children,
-  ...props
-}) => {
+const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
   const {
     blockClass,
     colGap,
