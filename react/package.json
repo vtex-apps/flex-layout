@@ -20,5 +20,6 @@
   },
   "resolutions": {
     "@types/graphql": "14.0.7"
-  }
+  },
+  "version": "0.13.0"
 }
