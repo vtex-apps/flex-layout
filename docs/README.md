@@ -37,7 +37,7 @@ The props below should be edited at your theme's `blocks.json`. They support [`r
 | `marginBottom`             | `0...10`  | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to this row.                       | `undefined`   |
 | `paddingTop`               | `0...10`  | A `number` or `string` magnitude for the `pt` Tachyons token to be applied to this row.                       | `undefined`   |
 | `paddingBottom`            | `0...10`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to this row.                       | `undefined`   |
-| `border`                   | `String[]`            | An array with the sides of this row a border should be applied to (`top`, `right`, `bottom`, `left` or `all`). | `undefined`   |
+| `border`                   | `String \| String[]`            | A string, or an array of strings, with the sides of this row a border should be applied to (`top`, `right`, `bottom`, `left` or `all`). | `undefined`   |
 | `borderWidth`              | `0...5`               | A `number` or `string` magnitude for the `bw` Tachyons token to be applied to this row.                        | `undefined`   |
 | `borderColor`              | `String`              | The color of the border.                                                                                       | `undefined`   |
 | `preserveLayoutOnMobile`   | `Boolean`             | Whether or not the flex-row should break into a column layout on mobile.                                      | `false`       |
@@ -58,7 +58,7 @@ The props below should be edited at your theme's `blocks.json`. They support [`r
 | `marginRight`            | `0...10` | A `number` or `string` magnitude for the `mr` Tachyons token to be applied to this column.                                 | `undefined`   |
 | `paddingLeft`            | `0...10` | A `number` or `string` magnitude for the `pl` Tachyons token to be applied to this column.                                 | `undefined`   |
 | `paddingRight`           | `0...10` | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to this column.                                 | `undefined`   |
-| `border`                 | `String[]`            | An array with the sides of this column a border should be applied to (`top`, `right`, `bottom`, `left` or `all`).    | `undefined`   |
+| `border`                 | `String \| String[]`            | A string, or an array of strings, with the sides of this column a border should be applied to (`top`, `right`, `bottom`, `left` or `all`).    | `undefined`   |
 | `borderWidth`            | `0...5`               | A `number` or `string` magnitude for the `bw` Tachyons token to be applied to this column.                           | `undefined`   |
 | `borderColor`            | `String`              | The color of the border.                                                                                             | `undefined`   |
 | `horizontalAlign`        | `left`&#124;`right`&#124;`center` | Controls horizontal alignment for the items inside the flex-col.                                              | `left`        |
