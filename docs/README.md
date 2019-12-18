@@ -35,6 +35,7 @@ The props below support [`responsive-values`](https://github.com/vtex-apps/respo
 | `preventVerticalStretch`   | `Boolean`             | Prevents the row from stretching vertically to fill its parent height with `items-stretch` token.             | `false`       |
 | `horizontalAlign`          | `left`&#124;`right`&#124;`center` | Controls horizontal alignment for the items inside the `flex-layout.row`.                                              | `left`        |
 | `colSizing`                | `equal`&#124;`auto`       | Controls the width of the columns inside the `flex-layout.row`.                                                        | `equal`       |
+| `colJustify`                | `between`&#124;`around`       | Controls the automatic space between columns and borders of the `flex-layout.row`.                                                        | `between`       |
 | `colGap`                   | `0...10`  | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to columns inside of the `flex-layout.row`. | `undefined`   |
 | `rowGap`                   | `0...10`  | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to columns inside of the `flex-layout.row`. | `undefined`   |
 
@@ -70,7 +71,7 @@ To better understand Flex Layout's practical operation, you can access the recip
 In order to apply CSS customizations in this and other blocks, follow the instructions given in the recipe on [Using CSS Handles for store customization](https://vtex.io/docs/recipes/style/using-css-handles-for-store-customization).
 
 | CSS Handles     |
-| --------------- | 
-| `flexRow`       | 
-| `flexCol`       | 
-| `flexColChild`  | 
+| --------------- |
+| `flexRow`       |
+| `flexCol`       |
+| `flexColChild`  |
