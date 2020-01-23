@@ -11,5 +11,3 @@
 .stretchChildrenWidth > *:not(img) {
   width: 100%;
 }
-
-.flexRowContent {}
