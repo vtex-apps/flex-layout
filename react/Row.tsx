@@ -1,10 +1,12 @@
 import React from 'react'
+import { generateBlockClass } from '@vtex/css-handles'
+import { defineMessages } from 'react-intl'
+
 import {
   FlexLayoutTypes,
   FlexLayoutContextProvider,
   useFlexLayoutContext,
 } from './components/FlexLayoutContext'
-import { defineMessages } from 'react-intl'
 
 import { useResponsiveWidth } from './hooks/responsiveWidth'
 import {
@@ -74,6 +76,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
   preventVerticalStretch,
   horizontalAlign,
   colSizing,
+  blockClass,
   colJustify = ColJustify.between,
 }) => {
   const context = useFlexLayoutContext()
@@ -125,7 +128,10 @@ const Row: StorefrontFunctionComponent<Props> = ({
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
         } ${margins} ${paddings} ${borders} ${horizontalAlignClass} ${
           isSizingAuto ? justifyToken : ''
-        } items-stretch w-100`}
+        } ${generateBlockClass(
+          styles.flexRowContent,
+          blockClass
+        )} items-stretch w-100`}
       >
         {cols.map((col, i) => {
           const isLast = i === cols.length - 1
