@@ -78,7 +78,6 @@ const Row: StorefrontFunctionComponent<Props> = ({
   preventVerticalStretch,
   horizontalAlign,
   colSizing,
-  blockClass,
   colJustify = ColJustify.between,
 }) => {
   const context = useFlexLayoutContext()
