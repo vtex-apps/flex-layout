@@ -1,6 +1,6 @@
 import React from 'react'
-import { generateBlockClass } from '@vtex/css-handles'
 import { defineMessages } from 'react-intl'
+import { useCssHandles } from 'vtex.css-handles'
 
 import {
   FlexLayoutTypes,
@@ -46,6 +46,8 @@ const JustifyValues = {
   [ColJustify.around]: 'justify-around',
 }
 
+const CSS_HANDLES = ['flexRowContent'] as const
+
 export interface Props extends Flex, Gap, Border {
   blockClass?: string
   marginTop: TachyonsScaleInput
@@ -80,6 +82,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
   colJustify = ColJustify.between,
 }) => {
   const context = useFlexLayoutContext()
+  const handles = useCssHandles(CSS_HANDLES)
 
   const gaps = parseTachyonsGroup({
     colGap: colGap != null ? colGap : context.colGap,
@@ -128,10 +131,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
           breakOnMobile ? 'flex-none flex-ns' : 'flex'
         } ${margins} ${paddings} ${borders} ${horizontalAlignClass} ${
           isSizingAuto ? justifyToken : ''
-        } ${generateBlockClass(
-          styles.flexRowContent,
-          blockClass
-        )} items-stretch w-100`}
+        } ${handles.flexRowContent} items-stretch w-100`}
       >
         {cols.map((col, i) => {
           const isLast = i === cols.length - 1

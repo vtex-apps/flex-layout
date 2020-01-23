@@ -1,16 +1,13 @@
 import React from 'react'
-import { useResponsiveValues } from 'vtex.responsive-values'
 import { defineMessages } from 'react-intl'
+import { useResponsiveValues } from 'vtex.responsive-values'
+import { useCssHandles } from 'vtex.css-handles'
 
 import {
   FlexLayoutTypes,
   useFlexLayoutContext,
   FlexLayoutContextProvider,
 } from './components/FlexLayoutContext'
-import { generateBlockClass } from '@vtex/css-handles'
-
-import styles from './components/FlexLayout.css'
-
 import {
   TachyonsScaleInput,
   parseTachyonsGroup,
@@ -63,9 +60,10 @@ const parseHorizontalAlign = (input?: string) => {
   return ''
 }
 
+const CSS_HANDLES = ['flexCol', 'flexColChild'] as const
+
 const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
   const {
-    blockClass,
     colGap,
     rowGap,
     marginLeft,
@@ -82,6 +80,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
   } = useResponsiveValues(props) as Props
 
   const context = useFlexLayoutContext()
+  const handles = useCssHandles(CSS_HANDLES)
 
   const gaps = parseTachyonsGroup({
     colGap: colGap != null ? colGap : context.colGap,
@@ -125,7 +124,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
   return (
     <FlexLayoutContextProvider parent={FlexLayoutTypes.COL} {...gaps}>
       <div
-        className={`${generateBlockClass(styles.flexCol, blockClass)} ${
+        className={`${handles.flexCol} ${
           grow ? 'flex-grow-1' : ''
         } ${margins} ${paddings} ${borders} ${vertical} ${horizontal} flex flex-column h-100 w-100`}
       >
@@ -136,10 +135,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
           return (
             <div
               key={i}
-              className={`${generateBlockClass(
-                styles.flexColChild,
-                blockClass
-              )} pb${rowGap}`}
+              className={`${handles.flexColChild} pb${rowGap}`}
               style={{
                 height:
                   preventVerticalStretch || verticalAlign ? 'auto' : '100%',
