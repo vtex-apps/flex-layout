@@ -1,29 +1,29 @@
 import React from 'react'
+import { defineMessages } from 'react-intl'
+import { useCssHandles } from 'vtex.css-handles'
 import Container from 'vtex.store-components/Container'
 import { useResponsiveValues } from 'vtex.responsive-values'
-import { defineMessages } from 'react-intl'
 
 import {
   FlexLayoutTypes,
   useFlexLayoutContext,
 } from './components/FlexLayoutContext'
 import Row, { Props as RowProps } from './Row'
-import { generateBlockClass, BlockClass } from '@vtex/css-handles'
-
-import styles from './components/FlexLayout.css'
 
 interface Props extends RowProps {
   fullWidth?: boolean
 }
 
-const FlexLayout: StorefrontFunctionComponent<Props & BlockClass> = props => {
+const CSS_HANDLES = ['flexRow'] as const
+
+const FlexLayout: StorefrontFunctionComponent<Props> = props => {
   const responsiveProps = useResponsiveValues(props) as Props
-  const { fullWidth, blockClass } = responsiveProps
+  const { fullWidth } = responsiveProps
   const context = useFlexLayoutContext()
+  const handles = useCssHandles(CSS_HANDLES)
 
   const content = <Row {...responsiveProps} />
 
-  const baseClassNames = generateBlockClass(styles.flexRow, blockClass)
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
   if (fullWidth && !isTopLevel) {
@@ -33,11 +33,11 @@ const FlexLayout: StorefrontFunctionComponent<Props & BlockClass> = props => {
   }
 
   if (fullWidth || !isTopLevel) {
-    return <div className={baseClassNames}>{content}</div>
+    return <div className={handles.flexRow}>{content}</div>
   }
 
   return (
-    <div className={baseClassNames}>
+    <div className={handles.flexRow}>
       <Container>{content}</Container>
     </div>
   )
