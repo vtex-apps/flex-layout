@@ -23,10 +23,22 @@ enum HorizontalAlign {
   center = 'center',
 }
 
+enum VerticalAlign {
+  top = 'top',
+  middle = 'middle',
+  bottom = 'bottom',
+}
+
 const HORIZONTAL_ALIGN_MAP = {
   left: 'justify-start',
   center: 'justify-center',
   right: 'justify-end',
+}
+
+const VERTICAL_ALIGN_MAP = {
+  top: 'flex-start',
+  middle: 'center',
+  bottom: 'flex-end',
 }
 
 enum ColSizing {
@@ -54,6 +66,7 @@ export interface Props extends Flex, Gap, Border {
   preventHorizontalStretch?: boolean
   preventVerticalStretch?: boolean
   horizontalAlign?: HorizontalAlign
+  verticalAlign?: VerticalAlign
   colSizing?: ColSizing
   colJustify?: ColJustify
 }
@@ -73,6 +86,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
   preventHorizontalStretch,
   preventVerticalStretch,
   horizontalAlign,
+  verticalAlign,
   colSizing,
   colJustify = ColJustify.between,
 }) => {
@@ -117,6 +131,10 @@ const Row: StorefrontFunctionComponent<Props> = ({
   const horizontalAlignClass =
     HORIZONTAL_ALIGN_MAP[horizontalAlign || HorizontalAlign.left] ||
     HORIZONTAL_ALIGN_MAP.left
+
+  const verticalAlignClass =
+    VERTICAL_ALIGN_MAP[VerticalAlign || VerticalAlign.top] ||
+    VERTICAL_ALIGN_MAP.top
 
   return (
     <FlexLayoutContextProvider parent={FlexLayoutTypes.ROW} {...gaps}>
