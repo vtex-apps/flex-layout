@@ -46,7 +46,7 @@ const JustifyValues = {
   [ColJustify.around]: 'justify-around',
 }
 
-const CSS_HANDLES = ['flexRowContent'] as const
+const CSS_HANDLES = ['flexRowContent', 'flexRowItemWrapper'] as const
 
 export interface Props extends Flex, Gap, Border {
   blockClass?: string
@@ -147,7 +147,9 @@ const Row: StorefrontFunctionComponent<Props> = ({
                   : `pr${colGap}`
               } ${preventVerticalStretch ? '' : 'items-stretch'} ${
                 preventHorizontalStretch ? '' : styles.stretchChildrenWidth
-              } ${col.width === 'grow' ? 'flex-grow-1' : ''} flex`}
+              } ${col.width === 'grow' ? 'flex-grow-1' : ''} flex ${
+                handles.flexRowItemWrapper
+              }`}
               style={{
                 width:
                   preventHorizontalStretch ||
