@@ -30,7 +30,7 @@ The props below support [`responsive-values`](https://github.com/vtex-apps/respo
 | `border`                   | `String \| String[]`              | An array to define in which sides of the row a border should be applied to (`top`, `right`, `bottom`, `left` or `all`). | `undefined`   |
 | `colGap`                   | `0...10`                          | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to columns inside of the `flex-layout.row`.  | `undefined`   |
 | `colSizing`                | `equal`&#124;`auto`               | Controls the width of the columns inside the `flex-layout.row`.                                                         | `equal`       |
-| `colJustify`                | `between`&#124;`around`       | Controls the automatic space between columns and borders of the `flex-layout.row`.                                                        | `between`       |
+| `colJustify`  | `enum` | Controls the space between columns and borders of the `flex-layout.row`, according to the `justify-content` CSS property. Possible values are `between` (adding no space between borders and columns) and `around` (adding the space). | `between` |
 | `fullWidth`  |  `boolean` | Whether the component should occupy all the available width from its parent (`true`) or not (`false`).   | `false`  |
 | `horizontalAlign`          | `left`&#124;`right`&#124;`center` | Controls horizontal alignment for the items inside the `flex-layout.row`.                                               | `left`        |
 | `marginBottom`             | `0...10`                          | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to the row.                                  | `undefined`   |
