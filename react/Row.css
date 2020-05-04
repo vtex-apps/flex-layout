@@ -11,3 +11,8 @@
 .stretchChildrenWidth > *:not(img) {
   width: 100%;
 }
+
+/** Used for hiding empty columns */
+.col:empty {
+  display: none;
+}
