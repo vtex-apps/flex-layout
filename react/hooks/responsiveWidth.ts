@@ -46,9 +46,6 @@ const distributeAvailableWidth = (
   )
 
   if (availableWidth < 0 && !hasAnyWidthGrow) {
-    console.warn(
-      'Total width set for columns of a flex-layout.row block exceeds 100%.'
-    )
     const normalization = -(100 / availableWidth)
     cols = cols.map(col => ({
       ...col,

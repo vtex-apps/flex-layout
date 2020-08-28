@@ -103,16 +103,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
     borderColor,
   })
 
-  if (context.parent === FlexLayoutTypes.COL) {
-    console.warn(
-      'A `flex-layout.col` is being inserted directly into another `flex-layout.col`. This might might have unpredicted behaviour.'
-    )
-  }
-
   if (context.parent === FlexLayoutTypes.NONE) {
-    console.warn(
-      'A `flex-layout.col` block is being inserted directly into the page, but it needs to be inserted into a `flex-layout.row` block.'
-    )
     return null
   }
 
