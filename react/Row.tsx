@@ -111,12 +111,6 @@ const Row: StorefrontFunctionComponent<Props> = ({
     hideEmptyCols: experimentalHideEmptyCols,
   })
 
-  if (context.parent === FlexLayoutTypes.ROW) {
-    console.warn(
-      'A flex-row is being inserted directly into another flex-row. This might have unpredicted behaviour.'
-    )
-  }
-
   const isSizingAuto = colSizing === ColSizing.auto
 
   const justifyToken =
