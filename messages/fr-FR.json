@@ -1,0 +1,6 @@
+{
+  "admin/editor.row.title": "Ligne",
+  "admin/editor.column.title": "Colonne",
+  "admin/editor.row.description": "Composant de la ligne pour l’aménagement de la mise en page flexible",
+  "admin/editor.column.description": "Composant de la colonne pour l’aménagement de la mise en page flexible"
+}

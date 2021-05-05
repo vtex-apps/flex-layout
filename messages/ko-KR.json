@@ -1,0 +1,6 @@
+{
+  "admin/editor.row.title": "행",
+  "admin/editor.column.title": "열",
+  "admin/editor.row.description": "플렉스 레이아웃 구조의 행 구성 요소",
+  "admin/editor.column.description": "플렉스 레이아웃 구조의 열 구성 요소"
+}

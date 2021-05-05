@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- I18n It, Fr, Ko and Nl translations.
+
+### Fixed
+
+- Crowdin configuration file.
+- Changelog.
+
 ## [0.16.0] - 2021-03-03
 
 
