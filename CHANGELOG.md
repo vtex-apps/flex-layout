@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- I18n pseudo language to implement in-context tool.
+
+### Fixed
+
+- Crowdin configuration file.
+
 ## [0.17.0] - 2021-05-05
 
 ### Added
