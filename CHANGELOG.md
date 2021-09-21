@@ -11,7 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- I18n Bg and Bs (pseudo language to implement in-context tool).
+- I18n Bg.
+
+### Fixed
+
+-I18n Bs and Es.
 
 ### Fixed
 
