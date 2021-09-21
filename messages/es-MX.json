@@ -1,6 +1,0 @@
-{
-  "admin/editor.row.title": "Fila",
-  "admin/editor.column.title": "Columna",
-  "admin/editor.row.description": "Componente de Fila para la estructura de layout flex",
-  "admin/editor.column.description": "Componente de Columna para la estructura de layout flex"
-}
