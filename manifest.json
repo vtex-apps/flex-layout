@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "flex-layout",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "title": "VTEX flex layout component",
   "defaultLocale": "pt-BR",
   "description": "VTEX flex layout component",
