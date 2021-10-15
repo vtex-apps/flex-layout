@@ -1,6 +1,9 @@
-📢 Don't fork this project. Use, [contribute](https://github.com/vtex-apps/awesome-io#contributing), or open issues through [Store Discussion](https://github.com/vtex-apps/store-discussion).
+📢 Don't fork this project. Use, [contribute](https://github.com/vtex-apps/flex-layout), or open issues through [Store Discussion](https://github.com/vtex-apps/store-discussion).
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Flex Layout
@@ -32,6 +35,7 @@ The props below support [`responsive-values`](https://github.com/vtex-apps/respo
 | `colSizing`                | `equal`&#124;`auto`               | Controls the width of the columns inside the `flex-layout.row`.                                                         | `equal`       |
 | `fullWidth`                | `Boolean`                         | Whether or not the component should ocuppy all the available width from its parent.                                     | `false`       |
 | `horizontalAlign`          | `left`&#124;`right`&#124;`center`&#124;`between`&#124;`around` | Controls horizontal alignment for the items inside the `flex-layout.row`.   It defaults to `between` if `colSizing` is `auto` and to `left` otherwise.                                             | `left`        |
+| `colJustify`               | `enum` | Controls the space between columns and borders of the `flex-layout.row`, according to the `justify-content` CSS property. Possible values are `between` (adding no space between borders and columns) and `around` (adding the space). | `between` |
 | `marginBottom`             | `0...10`                          | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to the row.                                  | `undefined`   |
 | `marginTop`                | `0...10`                          | A `number` or `string` magnitude for the `mt` Tachyons token to be applied to the row.                                  | `undefined`   |
 | `paddingBottom`            | `0...10`                          | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to the row.                                  | `undefined`   |
@@ -66,7 +70,7 @@ The props below support [`responsive-values`](https://github.com/vtex-apps/respo
 - When creating levels, it is necessary to **alternate between rows and columns**. Within a row, you can only place columns, and within columns, only rows.
 - Be mindful about the structure that you set in your flex layout does not only affect your code organization, but also reflects in the way that blocks will be shown and managed through the Site Editor admin. Therefore, it is always important to **take the organization of both code and Site Editor into account when planning to apply the Flex Layout** onto a page.
 
-To better understand Flex Layout's practical operation, you can access the recipe on [Using Flex Layout](https://vtex.io/docs/recipes/layout/using-flex-layout)
+To better understand Flex Layout's practical operation, you can access the recipe on [Using Flex Layout](https://vtex.io/docs/recipes/templates/using-flex-layout/)
 
 ## Customization
 
@@ -81,13 +85,7 @@ In order to apply CSS customizations in this and other blocks, follow the instru
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+

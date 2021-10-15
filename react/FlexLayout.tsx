@@ -26,12 +26,6 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
 
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
-  if (fullWidth && !isTopLevel) {
-    console.warn(
-      'Prop `fullWidth` is allowed only on top-level `flex-layout.row` blocks.'
-    )
-  }
-
   if (fullWidth || !isTopLevel) {
     return <div className={handles.flexRow}>{content}</div>
   }
