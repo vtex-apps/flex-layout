@@ -1,0 +1,6 @@
+{
+  "admin/editor.row.title": "Riga",
+  "admin/editor.column.title": "Colonna",
+  "admin/editor.row.description": "Componente a riga della struttura di Flex Layout",
+  "admin/editor.column.description": "Componente a colonna della struttura di Flex Layout"
+}

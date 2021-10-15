@@ -7,6 +7,60 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.0] - 2021-09-24
+### Added
+
+- I18n Bg.
+
+### Fixed
+
+- I18n Bs and Es.
+
+## [0.18.0] - 2021-08-17
+
+### Added
+
+- I18n pseudo language to implement in-context tool.
+
+### Fixed
+
+- Crowdin configuration file.
+
+## [0.17.0] - 2021-05-05
+
+### Added
+
+- I18n It, Fr, Ko and Nl translations.
+
+### Fixed
+
+- Crowdin configuration file.
+- Changelog.
+
+## [0.16.0] - 2021-03-03
+
+
+### Added
+
+- I18n Ro and Jp.
+
+### Fixed
+
+- Crowdin configuration file.
+
+## [0.15.2] - 2020-12-08
+
+### Fixed
+- Fix broken and wrong links in the docs.
+
+## [0.15.1] - 2020-08-31
+### Removed
+- Lots of obsolete warnings.
+
+## [0.15.0] - 2020-05-04
+### Added
+- Prop `experimentalHideEmptyCols`.
+
 ## [0.14.0] - 2020-01-27
 ### Added
 - `flexRowContent` CSS handle.

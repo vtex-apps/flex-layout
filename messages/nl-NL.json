@@ -1,0 +1,6 @@
+{
+  "admin/editor.row.title": "Rij",
+  "admin/editor.column.title": "Kolom",
+  "admin/editor.row.description": "Rijcomponent van flex layoutstructuur",
+  "admin/editor.column.description": "Kolomcomponent van flex layoutstructuur"
+}

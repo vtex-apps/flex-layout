@@ -60,6 +60,7 @@ export interface Props extends Flex, Gap, Border {
   horizontalAlign?: HorizontalAlign
   colSizing?: ColSizing
   colJustify?: ColJustify
+  experimentalHideEmptyCols?: boolean
 }
 
 const Row: StorefrontFunctionComponent<Props> = ({
@@ -79,6 +80,7 @@ const Row: StorefrontFunctionComponent<Props> = ({
   horizontalAlign,
   colSizing,
   colJustify = ColJustify.between,
+  experimentalHideEmptyCols = false,
 }) => {
   const context = useFlexLayoutContext()
   const handles = useCssHandles(CSS_HANDLES)
@@ -106,13 +108,8 @@ const Row: StorefrontFunctionComponent<Props> = ({
 
   const { cols, breakOnMobile } = useResponsiveWidth(children, {
     preserveLayoutOnMobile,
+    hideEmptyCols: experimentalHideEmptyCols,
   })
-
-  if (context.parent === FlexLayoutTypes.ROW) {
-    console.warn(
-      'A flex-row is being inserted directly into another flex-row. This might have unpredicted behaviour.'
-    )
-  }
 
   const isSizingAuto = colSizing === ColSizing.auto
 
@@ -147,7 +144,9 @@ const Row: StorefrontFunctionComponent<Props> = ({
                   : `pr${colGap}`
               } ${preventVerticalStretch ? '' : 'items-stretch'} ${
                 preventHorizontalStretch ? '' : styles.stretchChildrenWidth
-              } ${col.width === 'grow' ? 'flex-grow-1' : ''} flex`}
+              } ${col.width === 'grow' ? 'flex-grow-1' : ''} ${
+                experimentalHideEmptyCols ? styles.col : ''
+              } flex`}
               style={{
                 width:
                   preventHorizontalStretch ||

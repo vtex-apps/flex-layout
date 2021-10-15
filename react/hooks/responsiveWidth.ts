@@ -4,6 +4,7 @@ import { parseWidth } from '../modules/valuesParser'
 
 interface DistributedWidthOptions {
   preserveLayoutOnMobile?: boolean
+  hideEmptyCols?: boolean
 }
 
 interface ColWithWidth {
@@ -21,7 +22,10 @@ interface ColWithWidth {
  * There are 3 columns. The user sets the width for the first one to 50%.
  * This function will set the widths of the second and third columns to 25%.
  */
-const distributeAvailableWidth = (cols: ColWithWidth[]) => {
+const distributeAvailableWidth = (
+  cols: ColWithWidth[],
+  { hideEmptyCols = false } = {}
+) => {
   const { availableWidth, remainingColsNum, hasAnyWidthGrow } = cols.reduce(
     (acc, col) => {
       const isGrow = col.width === 'grow'
@@ -42,9 +46,6 @@ const distributeAvailableWidth = (cols: ColWithWidth[]) => {
   )
 
   if (availableWidth < 0 && !hasAnyWidthGrow) {
-    console.warn(
-      'Total width set for columns of a flex-layout.row block exceeds 100%.'
-    )
     const normalization = -(100 / availableWidth)
     cols = cols.map(col => ({
       ...col,
@@ -61,7 +62,9 @@ const distributeAvailableWidth = (cols: ColWithWidth[]) => {
       element: col.element,
       width: col.hasDefinedWidth
         ? definedWidth
-        : `${Math.floor(Math.max(0, availableWidth) / remainingColsNum)}%`,
+        : `${Math.floor(
+            Math.max(0, availableWidth) / (hideEmptyCols ? 1 : remainingColsNum)
+          )}%`,
       hasDefinedWidth: col.hasDefinedWidth,
     }
   })
@@ -79,7 +82,8 @@ export const useResponsiveWidth = (
 
   const isPhone = device === 'phone'
 
-  const { preserveLayoutOnMobile = false } = options || {}
+  const { preserveLayoutOnMobile = false, hideEmptyCols = false } =
+    options || {}
 
   const cols: ColWithWidth[] = React.Children.toArray(children).map(col => {
     if (!isReactElement(col)) {
@@ -135,7 +139,7 @@ export const useResponsiveWidth = (
     !preserveLayoutOnMobile && isPhone && !isAnyColResponsive
 
   return {
-    cols: distributeAvailableWidth(cols),
+    cols: distributeAvailableWidth(cols, { hideEmptyCols }),
     breakOnMobile,
   }
 }
