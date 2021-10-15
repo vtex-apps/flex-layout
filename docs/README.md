@@ -33,7 +33,8 @@ The props below support [`responsive-values`](https://github.com/vtex-apps/respo
 | `border`                   | `String \| String[]`              | An array to define in which sides of the row a border should be applied to (`top`, `right`, `bottom`, `left` or `all`). | `undefined`   |
 | `colGap`                   | `0...10`                          | A `number` or `string` magnitude for the `pr` Tachyons token to be applied to columns inside of the `flex-layout.row`.  | `undefined`   |
 | `colSizing`                | `equal`&#124;`auto`               | Controls the width of the columns inside the `flex-layout.row`.                                                         | `equal`       |
-| `fullWidth`                | `Boolean`                         | Whether or not the component should ocuppy all the available width from its parent.                                     | `false`       |
+| `colJustify`  | `enum` | Controls the space between columns and borders of the `flex-layout.row`, according to the `justify-content` CSS property. Possible values are `between` (adding no space between borders and columns) and `around` (adding the space). | `between` |
+| `fullWidth`  |  `boolean` | Whether the component should occupy all the available width from its parent (`true`) or not (`false`).   | `false`  |
 | `horizontalAlign`          | `left`&#124;`right`&#124;`center` | Controls horizontal alignment for the items inside the `flex-layout.row`.                                               | `left`        |
 | `marginBottom`             | `0...10`                          | A `number` or `string` magnitude for the `mb` Tachyons token to be applied to the row.                                  | `undefined`   |
 | `marginTop`                | `0...10`                          | A `number` or `string` magnitude for the `mt` Tachyons token to be applied to the row.                                  | `undefined`   |
@@ -84,14 +85,7 @@ In order to apply CSS customizations in this and other blocks, follow the instru
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
