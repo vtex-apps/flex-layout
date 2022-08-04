@@ -18,7 +18,7 @@ const CSS_HANDLES = ['flexRow'] as const
 
 const FlexLayout: StorefrontFunctionComponent<Props> = props => {
   const responsiveProps = useResponsiveValues(props) as Props
-  const { fullWidth } = responsiveProps
+  const { fullWidth, htmlId } = responsiveProps
   const context = useFlexLayoutContext()
   const handles = useCssHandles(CSS_HANDLES)
 
@@ -27,11 +27,15 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
   if (fullWidth || !isTopLevel) {
-    return <div className={handles.flexRow}>{content}</div>
+    return (
+      <div className={handles.flexRow} id={htmlId}>
+        {content}
+      </div>
+    )
   }
 
   return (
-    <div className={handles.flexRow}>
+    <div className={handles.flexRow} id={htmlId}>
       <Container>{content}</Container>
     </div>
   )
@@ -51,6 +55,15 @@ const messages = defineMessages({
 FlexLayout.schema = {
   title: messages.title.id,
   description: messages.description.id,
+  type: 'object',
+  properties: {
+    htmlId: {
+      title: 'Html Id',
+      description: 'HTML Id Attribute of flexRow',
+      type: 'string',
+      default: null,
+    },
+  },
 }
 
 export default FlexLayout

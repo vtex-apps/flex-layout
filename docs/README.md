@@ -44,7 +44,7 @@ The props below support [`responsive-values`](https://github.com/vtex-apps/respo
 | `preventHorizontalStretch` | `Boolean`                         | Prevents the row from stretching horizontally to fill its parent width.                                                 | `false`       |
 | `preventVerticalStretch`   | `Boolean`                         | Prevents the row from stretching vertically to fill its parent height with `items-stretch` token.                       | `false`       |
 | `rowGap`                   | `0...10`                          | A `number` or `string` magnitude for the `pb` Tachyons token to be applied to columns inside of the `flex-layout.row`.  | `undefined`   |
-
+| `htmlId`                   | `String`                          | This prop adds an html id on `flexRow` and it can be changed from Site Editor. This enables the possibility to access a section from page using links.                                                                                | `undefined`   |
 ### `flex-layout.col`
 
 | Prop name                | Type                              | Description                                                                                                                | Default value |

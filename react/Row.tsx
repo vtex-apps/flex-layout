@@ -55,6 +55,7 @@ export interface Props extends Flex, Gap, Border {
   horizontalAlign?: ColJustify
   colJustify?: ColJustify
   experimentalHideEmptyCols?: boolean
+  htmlId?: string
 }
 
 const Row: StorefrontFunctionComponent<Props> = ({
