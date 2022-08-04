@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.20.0] - 2022-08-04
 ### Added
 
 - New prop `"htmlId"` that adds an html id on `flexRow` and it can be changed from Site Editor. This enables the possibility to access a section from page using links.
