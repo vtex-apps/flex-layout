@@ -5,6 +5,7 @@ type Group<T, U> = { [key in keyof T]: U }
 type TachyonsInputGroup<T> = Group<T, TachyonsScaleInput>
 interface ResponsiveInput<T> {
   mobile: T
+  tablet: T
   desktop: T
 }
 
@@ -21,10 +22,11 @@ const isResponsiveInput = <T>(value: any): value is ResponsiveInput<T> =>
  */
 export const parseResponsive = <T, U>(parse: (value: T) => U) => (
   value: T | ResponsiveInput<T>
-): null | U | { mobile: U; desktop: U } => {
+): null | U | { mobile: U; tablet: U; desktop: U } => {
   if (isResponsiveInput(value)) {
     return {
       mobile: parse(value.mobile),
+      tablet: parse(value.tablet),
       desktop: parse(value.desktop),
     }
   }
