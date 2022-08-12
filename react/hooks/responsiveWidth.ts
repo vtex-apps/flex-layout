@@ -103,7 +103,7 @@ export const useResponsiveWidth = (
     if (width && typeof width === 'object') {
       return {
         element: col,
-        width: isPhone ? width.mobile || 0 : isTablet ? width.tablet || 0 : width.desktop || 0,
+        width: isPhone ? width.phone || 0 : isTablet ? width.tablet || 0 : width.desktop || 0,
         hasDefinedWidth: true,
         isResponsive: true,
       }
