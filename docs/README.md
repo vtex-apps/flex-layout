@@ -23,6 +23,29 @@ You can use **any** array of blocks as `flex-layout.row` and `flex-layout.col` c
 
 The props below support [`responsive-values`](https://github.com/vtex-apps/responsive-values), meaning that you can define to the same prop different values based on each device's screen size, such as mobile and desktop.
 
+For example:
+```
+{
+  "flex-layout.row#row": {
+    "props": {
+      "marginBottom": {
+        "mobile": 2,
+        "desktop": 6
+      },
+      "width": {
+        "desktop": "33%",
+        "tablet": "50%",
+        "phone": "100%"
+      }
+    },
+    "children": [
+      "flex-layout.col#col1",
+      "flex-layout.col#col2",
+      ...
+    ]
+  }
+```
+
 ### `flex-layout.row`
 
 | Prop name                  | Type                              | Description                                                                                                             | Default value |
