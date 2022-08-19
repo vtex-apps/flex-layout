@@ -14,7 +14,7 @@ const MAX_TACHYONS_SCALE = 11
 
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isResponsiveInput = <T>(value: any): value is ResponsiveInput<T> =>
-value && (value.mobile != null || value.phone != null || value.tablet != null) && value.desktop != null
+  value && (value.mobile != null || value.phone != null || value.tablet != null) && value.desktop != null
 
 /** Takes a parser of units, and returns a parser that accepts either a
  * value or a responsive input of that same type of value
