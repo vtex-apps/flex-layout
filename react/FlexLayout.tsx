@@ -55,14 +55,6 @@ const messages = defineMessages({
 FlexLayout.schema = {
   title: messages.title.id,
   description: messages.description.id,
-  properties: {
-    htmlId: {
-      title: 'Html Id',
-      description: 'HTML Id Attribute of flexRow',
-      type: 'string',
-      default: null,
-    },
-  },
 }
 
 export default FlexLayout
