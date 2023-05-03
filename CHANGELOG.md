@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Remove properties from schema since it cannot be edited through site editor.
 
 ## [0.21.2] - 2023-04-25
 ### Fixed
