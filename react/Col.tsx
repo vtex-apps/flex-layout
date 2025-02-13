@@ -37,7 +37,8 @@ interface Props extends Flex, Gap, Border {
   paddingRight: TachyonsScaleInput
   preventVerticalStretch?: boolean
   verticalAlign?: VerticalAlign
-  horizontalAlign?: HorizontalAlign
+  horizontalAlign?: HorizontalAlign,
+  arialabel?: string
 }
 
 const parseVerticalAlign = (input?: string) => {
@@ -77,6 +78,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
     preventVerticalStretch,
     verticalAlign,
     horizontalAlign,
+    arialabel
   } = useResponsiveValues(props) as Props
 
   const context = useFlexLayoutContext()
@@ -114,7 +116,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
 
   return (
     <FlexLayoutContextProvider parent={FlexLayoutTypes.COL} {...gaps}>
-      <div
+      <div aria-label={arialabel}
         className={`${handles.flexCol} ${
           grow ? 'flex-grow-1' : ''
         } ${margins} ${paddings} ${borders} ${vertical} ${horizontal} flex flex-column h-100 w-100`}
