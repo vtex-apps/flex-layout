@@ -28,14 +28,14 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
 
   if (fullWidth || !isTopLevel) {
     return (
-      <div className={handles.flexRow} id={htmlId}>
+      <div className={handles.flexRow} id={htmlId} aria-label={"section " + htmlId}>
         {content}
       </div>
     )
   }
 
   return (
-    <div className={handles.flexRow} id={htmlId}>
+    <div className={handles.flexRow} id={htmlId} aria-label={"section " + htmlId}>
       <Container>{content}</Container>
     </div>
   )
