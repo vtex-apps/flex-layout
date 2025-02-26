@@ -1,5 +1,5 @@
 import React from 'react'
-import { defineMessages, useIntl, } from 'react-intl'
+import { defineMessages, useIntl } from 'react-intl'
 import { useCssHandles } from 'vtex.css-handles'
 import Container from 'vtex.store-components/Container'
 import { useResponsiveValues } from 'vtex.responsive-values'
