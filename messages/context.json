@@ -3,5 +3,5 @@
   "admin/editor.column.title": "Column",
   "admin/editor.row.description": "Row component of flex layout structure",
   "admin/editor.column.description": "Column component of flex layout structure",
-  "store/flex-layout.flexLayout-row.aria-label": "Section {sectionId, plural, =0 {Row} one {#}}"
+  "store/flex-layout.flexLayout-row.aria-label": "Section {sectionId, select, row {row} other {#}}"
 }
