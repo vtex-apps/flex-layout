@@ -62,8 +62,6 @@ The props below support [`responsive-values`](https://github.com/vtex-apps/respo
 | `rowGap`                 | `0...10`                          | A `number` or `string` magnitude for applying the `pb` Tachyons token to rows in the `flex-layout.col`.                      | `undefined`   |
 | `verticalAlign`          | `top`&#124;`middle`&#124;`bottom` | Controls vertical alignment for the items in the `flex-layout.col`.                                                          | `top`         |
 | `width`                  | `"0...100%"`&#124;`"grow"`        | Sets the width of the column. Accepts either a percentage or `"grow"`.                                                       | `undefined`   |
-| `arialabel` | `string` | Aria-label to be included for accessibility purposes |  `undefined` |
-
 ## App behavior
 
 - The highest level in a flex layout is **always** a row. Therefore, you can only add a `flex-layout.col` inside a `flex-layout.row` — never as a first-level block.
