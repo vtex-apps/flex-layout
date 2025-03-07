@@ -114,7 +114,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
 
   return (
     <FlexLayoutContextProvider parent={FlexLayoutTypes.COL} {...gaps}>
-      <div 
+      <div
         className={`${handles.flexCol} ${
           grow ? 'flex-grow-1' : ''
         } ${margins} ${paddings} ${borders} ${vertical} ${horizontal} flex flex-column h-100 w-100`}
