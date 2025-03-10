@@ -76,7 +76,7 @@ const Col: StorefrontFunctionComponent<Props> = ({ children, ...props }) => {
     grow,
     preventVerticalStretch,
     verticalAlign,
-    horizontalAlign,
+    horizontalAlign
   } = useResponsiveValues(props) as Props
 
   const context = useFlexLayoutContext()
