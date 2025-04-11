@@ -11,13 +11,15 @@ import {
 import Row, { Props as RowProps } from './Row'
 
 interface Props extends RowProps {
-  fullWidth?: boolean
+  fullWidth?: boolean,
+  arialabel?: string
 }
 
 const CSS_HANDLES = ['flexRow'] as const
 
 const FlexLayout: StorefrontFunctionComponent<Props> = props => {
   const responsiveProps = useResponsiveValues(props) as Props
+  const arialabel = responsiveProps.arialabel
   const { fullWidth, htmlId } = responsiveProps
   const context = useFlexLayoutContext()
   const handles = useCssHandles(CSS_HANDLES)
@@ -28,14 +30,14 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
 
   if (fullWidth || !isTopLevel) {
     return (
-      <div className={handles.flexRow} id={htmlId} aria-label={"section " + htmlId}>
+      <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: "section " + htmlId}>
         {content}
       </div>
     )
   }
 
   return (
-    <div className={handles.flexRow} id={htmlId} aria-label={"section " + htmlId}>
+    <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: "section " + htmlId}>
       <Container>{content}</Container>
     </div>
   )
