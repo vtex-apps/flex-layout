@@ -1,5 +1,5 @@
 import React from 'react'
-import { defineMessages } from 'react-intl'
+import { defineMessages, useIntl } from 'react-intl'
 import { useCssHandles } from 'vtex.css-handles'
 import Container from 'vtex.store-components/Container'
 import { useResponsiveValues } from 'vtex.responsive-values'
@@ -24,20 +24,26 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
   const context = useFlexLayoutContext()
   const handles = useCssHandles(CSS_HANDLES)
 
+  const intl = useIntl()
+
   const content = <Row {...responsiveProps} />
 
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
   if (fullWidth || !isTopLevel) {
     return (
-      <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: "section " + htmlId}>
+      <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: intl.formatMessage(
+        { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
+
         {content}
       </div>
     )
   }
 
   return (
-    <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: "section " + htmlId}>
+
+    <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: intl.formatMessage(
+        { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
       <Container>{content}</Container>
     </div>
   )

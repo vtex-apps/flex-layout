@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 + ### Fixed
 + - Accessibility issue with missing aria-label property
 
+### Changed
+
+- Update GitHub actions/cache to v4
+
+## [0.21.4] - 2025-03-10
++ ### Added
++ - aria-label into flex row components
+
 ## [0.21.3] - 2023-05-03
 ### Fixed
 - Remove properties from schema since it cannot be edited through site editor.
