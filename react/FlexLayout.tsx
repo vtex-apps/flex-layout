@@ -40,6 +40,7 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
       {wrappedContent}
     </div>
   )
+}
 
 const messages = defineMessages({
   title: {
