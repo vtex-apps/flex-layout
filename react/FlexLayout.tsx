@@ -30,24 +30,16 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
 
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
-  if (fullWidth || !isTopLevel) {
-    return (
-      <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: intl.formatMessage(
-        { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
-
-        {content}
-      </div>
-    )
-  }
+  const shouldUseContainer = !fullWidth && isTopLevel
+  
+  const wrappedContent = shouldUseContainer ? <Container>{content}</Container> : content
 
   return (
-
-    <div className={handles.flexRow} id={htmlId} aria-label={arialabel? arialabel: intl.formatMessage(
-        { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
-      <Container>{content}</Container>
+    <div className={handles.flexRow} id={htmlId} aria-label={arialabel ? arialabel : intl.formatMessage(
+      { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
+      {wrappedContent}
     </div>
   )
-}
 
 const messages = defineMessages({
   title: {
