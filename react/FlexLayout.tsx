@@ -11,13 +11,15 @@ import {
 import Row, { Props as RowProps } from './Row'
 
 interface Props extends RowProps {
-  fullWidth?: boolean
+  fullWidth?: boolean,
+  arialabel?: string
 }
 
 const CSS_HANDLES = ['flexRow'] as const
 
 const FlexLayout: StorefrontFunctionComponent<Props> = props => {
   const responsiveProps = useResponsiveValues(props) as Props
+  const arialabel = responsiveProps.arialabel
   const { fullWidth, htmlId } = responsiveProps
   const context = useFlexLayoutContext()
   const handles = useCssHandles(CSS_HANDLES)
@@ -28,19 +30,14 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
 
   const isTopLevel = context.parent === FlexLayoutTypes.NONE
 
-  if (fullWidth || !isTopLevel) {
-    return (
-      <div className={handles.flexRow} id={htmlId} aria-label={intl.formatMessage(
-        { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
-        {content}
-      </div>
-    )
-  }
+  const shouldUseContainer = !fullWidth && isTopLevel
+  
+  const wrappedContent = shouldUseContainer ? <Container>{content}</Container> : content
 
   return (
-    <div className={handles.flexRow} id={htmlId} aria-label={intl.formatMessage(
-      { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row' })}>
-      <Container>{content}</Container>
+    <div className={handles.flexRow} id={htmlId} aria-label={arialabel ? arialabel : intl.formatMessage(
+      { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
+      {wrappedContent}
     </div>
   )
 }
