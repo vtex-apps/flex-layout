@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flex-layout
+  description: Flex Layout is a layout structure built within VTEX IO Store
+    Framework. It allows building complex custom layouts using the concept of
+    rows and columns, setting the desired block structure and positioning in a
+    page.
+  tags:
+    - typescript
+  annotations:
+    vtex.com/janus-acronym: ""
+    vtex.com/o11y-os-index: ""
+    grafana/dashboard-selector: ""
+    github.com/project-slug: vtex-apps/flex-layout
+    vtex.com/platform-flow-id: ""
+    backstage.io/techdocs-ref: dir:../
+    vtex.com/application-id: BF2J94PH
+spec:
+  lifecycle: stable
+  owner: te-0013
+  type: frontend-ui
+  dependsOn: []
