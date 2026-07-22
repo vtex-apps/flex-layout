@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- Add `role="region"` to flex layout div with aria-label to comply with WCAG 2.2 Level A (4.1.2) and ARIA 1.2 specification
+- Add `role="group"` to flex layout div with aria-label to comply with WCAG 2.2 Level A (4.1.2) and ARIA 1.2 specification without introducing landmark navigation noise
 
 ## [0.21.5] - 2025-07-24
 + ### Fixed
