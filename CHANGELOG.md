@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.21.6] - 2026-07-27
 ### Fixed
 - Add `role="group"` to flex layout div with aria-label to comply with WCAG 2.2 Level A (4.1.2) and ARIA 1.2 specification without introducing landmark navigation noise
 
