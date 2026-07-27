@@ -35,7 +35,7 @@ const FlexLayout: StorefrontFunctionComponent<Props> = props => {
   const wrappedContent = shouldUseContainer ? <Container>{content}</Container> : content
 
   return (
-    <div className={handles.flexRow} id={htmlId} aria-label={arialabel ? arialabel : intl.formatMessage(
+    <div className={handles.flexRow} id={htmlId} role="group" aria-label={arialabel ? arialabel : intl.formatMessage(
       { id: 'store/flex-layout.flexLayout-row.aria-label' }, { sectionId: htmlId ?? 'row'})}>
       {wrappedContent}
     </div>
