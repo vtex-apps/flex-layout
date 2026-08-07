@@ -1,0 +1,6 @@
+{
+  "admin/editor.row.title": "แถว",
+  "admin/editor.column.title": "คอลัมน์",
+  "admin/editor.row.description": "ส่วนประกอบแถวของโครงสร้าง Flex layout",
+  "admin/editor.column.description": "ส่วนประกอบคอลัมน์ของโครงสร้าง Flex layout"
+}

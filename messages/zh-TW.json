@@ -1,0 +1,6 @@
+{
+  "admin/editor.row.title": "行",
+  "admin/editor.column.title": "欄",
+  "admin/editor.row.description": "彈性佈局結構的行組件",
+  "admin/editor.column.description": "彈性佈局結構的欄組件"
+}
