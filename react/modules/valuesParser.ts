@@ -5,6 +5,8 @@ type Group<T, U> = { [key in keyof T]: U }
 type TachyonsInputGroup<T> = Group<T, TachyonsScaleInput>
 interface ResponsiveInput<T> {
   mobile: T
+  phone: T
+  tablet: T
   desktop: T
 }
 
@@ -12,7 +14,7 @@ const MAX_TACHYONS_SCALE = 11
 
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isResponsiveInput = <T>(value: any): value is ResponsiveInput<T> =>
-  value && value.mobile != null && value.desktop != null
+  value && (value.mobile != null || value.phone != null || value.tablet != null) && value.desktop != null
 
 /** Takes a parser of units, and returns a parser that accepts either a
  * value or a responsive input of that same type of value
@@ -21,10 +23,12 @@ const isResponsiveInput = <T>(value: any): value is ResponsiveInput<T> =>
  */
 export const parseResponsive = <T, U>(parse: (value: T) => U) => (
   value: T | ResponsiveInput<T>
-): null | U | { mobile: U; desktop: U } => {
+): null | U | { mobile: U; phone: U; tablet: U; desktop: U } => {
   if (isResponsiveInput(value)) {
     return {
       mobile: parse(value.mobile),
+      phone: parse(value.phone),
+      tablet: parse(value.tablet),
       desktop: parse(value.desktop),
     }
   }
